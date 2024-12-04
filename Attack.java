@@ -21,6 +21,6 @@ public class Attack {
     }
     //to string
     public String toString() {
-        return getAttackName() + " does " + getAttackDamage() + " damage!";;
+        return getAttackName() + " does " + getAttackDamage() + " damage!";
     }
 }

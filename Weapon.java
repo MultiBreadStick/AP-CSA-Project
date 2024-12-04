@@ -28,7 +28,6 @@ public class Weapon {
     }
 
     // returns all of the weapon's information with help from Github Copilot
-    @Override
     public String toString() {
         return "This " + type + " is named: " + name + ". " + name + " has a damage multiplier of " + multiplier + ".";
     }
