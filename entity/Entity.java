@@ -1,7 +1,7 @@
 package entity;
 
 import java.awt.image.BufferedImage;
-
+// general class that has the basic veriables needed for an entity
 public class Entity {
 	
 	public int x, y;
