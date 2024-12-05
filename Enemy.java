@@ -7,14 +7,16 @@ public class Enemy {
     private double attackMultiplier;
     private String name;
     private boolean isDead;
+    private boolean isRanged;
     
-    public Enemy(int health, double defense, double speed, double attackMultiplier, String name, String type) {
+    public Enemy(int health, double defense, double speed, double attackMultiplier, String name, String type, boolean isRanged) {
         this.health = health;
         this.defense = defense;
         this.speed = speed;
         this.attackMultiplier = attackMultiplier;
         this.name = name;
         isDead = false;
+        this.isRanged = isRanged;
     }
     
     //Get, set health
@@ -50,8 +52,7 @@ public class Enemy {
     }
 
     //Get, set name
-    public String getName() 
-    {
+    public String getName() {
         return name; 
     }
     public void setName (String name) {
@@ -64,5 +65,10 @@ public class Enemy {
     }
     public void setIsDead(boolean isDead) {
         this.isDead = isDead;
+    }
+
+    //get, set isRanged
+    public boolean isRanged() {
+        return isRanged;
     }
 }
