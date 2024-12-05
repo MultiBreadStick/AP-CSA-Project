@@ -1,5 +1,5 @@
 public class Weapon {
-    private int multiplier;
+    private double multiplier;
     private String name;
     private String type;
 
@@ -18,7 +18,7 @@ public class Weapon {
         return name;
     }
 
-    public int getMultiplier() {
+    public double getMultiplier() {
         return multiplier;
     }
 
