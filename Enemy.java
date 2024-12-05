@@ -1,5 +1,5 @@
 
-public class Enemies {
+public class Enemy {
 
     private int health;
     private double defense;
@@ -7,7 +7,7 @@ public class Enemies {
     private double attackMultiplier;
     private String name;
     
-    public Enemies(int health, double defense, double speed, double attackMultiplier, String name, String type) {
+    public Enemy(int health, double defense, double speed, double attackMultiplier, String name, String type) {
         this.health = health;
         this.defense = defense;
         this.speed = speed;

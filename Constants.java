@@ -34,4 +34,16 @@ public class Constants {
     public static final double BIG_ROCK_SPEED = 0.5;
     public static final double BIG_ROCK_ATTACK_MULTIPLIER = 0.75;
     public static final String BIG_ROCK_NAME = "Big rock";
+
+
+
+    //Sword
+    public static final double SWORD_MULTIPLIER = 1.5;
+    public static final double SWORD_WEAPON_SPEED = 1.5;
+    public static final String SWORD_NAME = "Sword";
+
+    //Hammer
+    public static final double HAMMER_MULTIPLIER = 3.0;
+    public static final double HAMMER_WEAPON_SPEED = 0.75;
+    public static final String HAMMER_NAME = "Hammer";
 }
