@@ -10,7 +10,7 @@ public class Attack {
         this.weapon = weapon;
     }
     //getter/setters
-    public int getAttackDamage() {
+    public double getAttackDamage() {
         return damage*weapon.getMultiplier();
     }
     public String getAttackName() {
