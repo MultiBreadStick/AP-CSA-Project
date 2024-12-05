@@ -15,23 +15,28 @@ public class Weapon {
         this.name = name;
     }
 
-    // getter methods
+    // set get methods
     public String getName() {
         return name;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 
     public double getMultiplier() {
         return multiplier;
     }
+    public void setMultiplier(double multiplier) {
+        this.multiplier = multiplier;
+    }
 
-    public double getSpeedMultiplier() {
+    public double getWeaponSpeed() {
         return weaponSpeed;
     }
-
-    // changes the weapon's name
-    public void changeWeaponName(String name) {
-        this.name = name;
+    public void setWeaponSpeed(double weaponSpeed) {
+        this.weaponSpeed = weaponSpeed;
     }
+
 
     // returns all of the weapon's information with help from Github Copilot
     public String toString() {

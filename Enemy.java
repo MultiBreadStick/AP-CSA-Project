@@ -6,6 +6,7 @@ public class Enemy {
     private double speed;
     private double attackMultiplier;
     private String name;
+    private boolean isDead;
     
     public Enemy(int health, double defense, double speed, double attackMultiplier, String name, String type) {
         this.health = health;
@@ -13,6 +14,7 @@ public class Enemy {
         this.speed = speed;
         this.attackMultiplier = attackMultiplier;
         this.name = name;
+        isDead = false;
     }
     
     //Get, set health
@@ -54,5 +56,13 @@ public class Enemy {
     }
     public void setName (String name) {
         this.name = name;
+    }
+
+    //Get, set isDead
+    public boolean getIsDead() {
+        return isDead;
+    }
+    public void setIsDead(boolean isDead) {
+        this.isDead = isDead;
     }
 }
