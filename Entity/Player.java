@@ -1,4 +1,4 @@
-package entity;
+package Entity;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
