@@ -1,12 +1,13 @@
 public class Room {
     private int level;
     private boolean inRoom;
-    private int type;
+    private String type;
 
-    public Room(int level, boolean inRoom, int type) {
+    public Room(int level, boolean inRoom, String type) {
         this.level = level;
         this.inRoom = inRoom;
         this.type = type;
+
     }
 
     //get set
@@ -24,13 +25,10 @@ public class Room {
         this.inRoom = inRoom;
     }
 
-    public int getType() {
+    public String getType() {
         return type;
     }
-    public void setType(int type) {
+    public void setType(String type) {
         this.type = type;
     }
-
-
-
 }

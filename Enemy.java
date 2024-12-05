@@ -71,4 +71,9 @@ public class Enemy {
     public boolean isRanged() {
         return isRanged;
     }
+
+    //get what enemy gets placed in what rooms
+    public int randomEnemy() {
+        return (int)(Math.random() * 6)
+    }
 }

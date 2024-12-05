@@ -1,5 +1,9 @@
 public class Constants {
     
+    //Room array
+    public static final int ROOM_ROW_MAX = 5;
+    public static final int ROOM_COL_MAX = 5;
+
     //Crab
     public static final int CRAB_HEALTH = 100;
     public static final double CRAB_DEFENSE = 1.25;
@@ -19,14 +23,14 @@ public class Constants {
     public static final double KIFFE_DEFENSE = 1.0;
     public static final double KIFFE_SPEED = 1.0;
     public static final double KIFFE_ATTACK_MULTIPLIER = 1.25;
-    public static final String KIFFE_NAME = "Steve";
+    public static final String KIFFE_NAME = "Kiffe";
 
     //Giant
     public static final int GIANT_HEALTH = 200;
     public static final double GIANT_DEFENSE = 0.75;
     public static final double GIANT_SPEED = 0.75;
     public static final double GIANT_ATTACK_MULTIPLIER = 1.25;
-    public static final String GIANT_NAME = "Giant";
+    public static final String GIANT_NAME = "Giant cock";
 
     //Big rock
     public static final int BIG_ROCK_HEALTH = 150;
