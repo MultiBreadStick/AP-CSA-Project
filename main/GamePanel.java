@@ -26,39 +26,40 @@ public class GamePanel extends JPanel implements Runnable{
 	Thread gameThread;
 	Player player = new Player(this, keyH);
 	
-	//creates the window
+	//window constructor based off our variables
 	public GamePanel() {
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
-		this.setBackground( new Color(116, 116, 116));
+		this.setBackground( new Color(116, 116, 116)); //grey
 		this.setDoubleBuffered(true);
 		this.addKeyListener(keyH);
 		this.setFocusable(true);
 	}
-	
+
+	//this starts the game loop
 	public void startGameThread() {
 	
 		gameThread = new Thread(this);
 		gameThread.start();
 	}
 
-	//The run op
+	// this is the run op
 	@Override
 	public void run() {
-		// this is the game loop
 		double drawInterval = 1000000000/FPS; 
 		double nextDrawTime = System.nanoTime() + drawInterval;
+		// this is te game loop
 		while(gameThread != null ) {
-			
+			//this creates the frame and updates the game
 			update();
-			
+			//redraws everything on the window
 			repaint();
 			
 			
-			
+			// this is the wait
 			try {
 				double remainingTime = nextDrawTime - System.nanoTime();
 				remainingTime = remainingTime/1000000;
-				
+				// this  is just to remsiningTime doesn't become negative and resets to 0
 				if(remainingTime < 0) {
 					remainingTime = 0;
 				}
@@ -73,14 +74,17 @@ public class GamePanel extends JPanel implements Runnable{
 		}
 	}
 	public void update() {
-		player.update();
+		player.update(); // updates the player state as this is the only thing we have right now, see player class for more
 	}
-	//draws updated player sprite position and deletes the old one
+	
+	
 	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		Graphics2D g2 = (Graphics2D)g;
-		player.draw(g2);
-		g2.dispose();
+		super.paintComponent(g); // clears the screen
+		Graphics2D g2 = (Graphics2D)g; // casts to Graphics2D
+		player.draw(g2); // draws the player
+		g2.dispose(); // clears the graphics2D resources
+		// see the player class for more
 	}
+	
 
 }
