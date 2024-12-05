@@ -30,7 +30,7 @@ public class Constants {
     public static final double GIANT_DEFENSE = 0.75;
     public static final double GIANT_SPEED = 0.75;
     public static final double GIANT_ATTACK_MULTIPLIER = 1.25;
-    public static final String GIANT_NAME = "Giant cock";
+    public static final String GIANT_NAME = "Giant";
 
     //Big rock
     public static final int BIG_ROCK_HEALTH = 150;
