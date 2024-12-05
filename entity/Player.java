@@ -21,12 +21,15 @@ public class Player extends Entity{
 		setDefaultValues();
 		getPlayerImage();
 	}
+	//Sets the player starting position, move speed, and direction of movment and sprite
 	public void setDefaultValues() {
 		x = 100;
 		y = 100;
 		speed = 4;
 		direction = "down";
 	}
+	//Acesses the sprite files and defines the coresponding directions
+	// the try catch is just in case the sprite files do not exist in the referenced location and cannot be acessed
 	public void getPlayerImage() {
 		try {
 			up1 = ImageIO.read(new File("/entity/playerSprites/sprite.png"));
@@ -41,6 +44,8 @@ public class Player extends Entity{
 			e.printStackTrace();
 		}
 	}
+	// checks which keys are being pressed if any based off the key handler class and sets the sprite's corresponding direction
+	// then cycles through each sprite( 2 for each direction) every 12 frames to create the running animaiton
 	public void update() {
 		if(keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true) {
 			if(keyH.upPressed == true) {
@@ -69,6 +74,8 @@ public class Player extends Entity{
 		}
 		
 	}
+	// this sets which image the player sprite is supposed to be using a switch statment based off our update() method
+	// then it actually draws the player onto the screen in whatever location its supposed to be in
 	public void draw(Graphics2D g2) {
 		BufferedImage image = null;
 		switch(direction) {
