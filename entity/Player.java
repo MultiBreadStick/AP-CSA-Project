@@ -32,14 +32,14 @@ public class Player extends Entity{
 	// the try catch is just in case the sprite files do not exist in the referenced location and cannot be acessed
 	public void getPlayerImage() {
 		try {
-			up1 = ImageIO.read(new File("/entity/playerSprites/sprite.png"));
-			up2 = ImageIO.read(new File("/entity/playerSprites/sprite.png"));
-			down1 = ImageIO.read(new File("/entity/playerSprites/sprite.png"));
-			down2 = ImageIO.read(new File("/entity/playerSprites/sprite.png"));
-			right1 = ImageIO.read(new File("/entity/playerSprites/sprite.png"));
-			right2 = ImageIO.read(new File("/entity/playerSprites/sprite.png"));
-			left1 = ImageIO.read(new File("/entity/playerSprites/sprite.png"));
-			left2 = ImageIO.read(new File("/entity/playerSprites/sprite.png"));
+			up1 = ImageIO.read(new File("entity/playerSprites/sprite.png"));
+			up2 = ImageIO.read(new File("entity/playerSprites/sprite.png"));
+			down1 = ImageIO.read(new File("entity/playerSprites/sprite.png"));
+			down2 = ImageIO.read(new File("entity/playerSprites/sprite.png"));
+			right1 = ImageIO.read(new File("entity/playerSprites/sprite.png"));
+			right2 = ImageIO.read(new File("entity/playerSprites/sprite.png"));
+			left1 = ImageIO.read(new File("entity/playerSprites/sprite.png"));
+			left2 = ImageIO.read(new File("entity/playerSprites/sprite.png"));
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
