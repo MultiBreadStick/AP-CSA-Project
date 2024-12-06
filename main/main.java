@@ -1,11 +1,22 @@
 package main;
 
-//this is the launch class that the launch .json is set to
-//not sure if it really works tho
-// might need to add gampanel.run()
+import javax.swing.JFrame;
+
 public class Main {
     public static void main(String[] args) {
+        JFrame window = new JFrame();
         GamePanel gamePanel = new GamePanel();
+
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setResizable(false);
+        window.setTitle("Quests of Greg the Crab");
+
+        window.add(gamePanel);
+        window.pack();
+
+        window.setLocationRelativeTo(null);
+        window.setVisible(true);
+
         gamePanel.startGameThread();
     }
 }
