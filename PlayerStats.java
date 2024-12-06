@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Playerstats {
+public class PlayerStats {
     //initialize variables 
     private int currentHealth;
     private int maxHealth; 
@@ -12,10 +12,10 @@ public class Playerstats {
     private List<Weapon> inventory; // (copilot)
 
     // constructor
-    public Playerstats(String name)
+    public PlayerStats(String name)
     {
         this.name = name; 
-        this.currenthealth = 100; 
+        this.currentHealth = 100; 
         this.maxHealth = 100;
         this.experience = 0; 
         this.level = 1; 
@@ -49,9 +49,9 @@ public class Playerstats {
         return name; 
     }
     // (copilot)
-    public List<String> getInventory() {
-        return inventory; 
-    }
+    //public List<String> getInventory() {
+    //    return inventory;
+    //}
 
     // setting the health 
     public void setCurrentHealth(int currentHealth)
@@ -84,11 +84,12 @@ public class Playerstats {
     public void removeItemFromInventory(Weapon item) {
         inventory.remove(item); 
     }
-}
-
     //returns all of the player's information
     public String toString()
     {
         return "Name: " + name + "\n" + "Level: " + level + "\n" + "Experience: " + experience + "\n" + "Health: " + currentHealth + "/" + maxHealth + "\n" + "Weapon: " + weapon.toString();
     }
 }
+
+    
+
