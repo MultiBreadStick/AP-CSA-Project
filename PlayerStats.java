@@ -8,8 +8,8 @@ public class PlayerStats {
     private int experience; 
     private int level; 
     private String name; 
-    private Weapon ranged;
-    private Weapon short;
+    private Weapon hand1;
+    private Weapon hand2;
 
     // constructor
     public PlayerStats(String name)
@@ -19,8 +19,8 @@ public class PlayerStats {
         this.maxHealth = 100;
         this.experience = 0; 
         this.level = 1; 
-        this.ranged = new Weapon();
-        this.short = new Weapon();
+        this.hand1 = new Weapon();
+        this.hand2 = new Weapon();
     }
 
     // getters
@@ -81,8 +81,10 @@ public class PlayerStats {
     
     public void addItemToInventory(Weapon item) {
         if (item.getIsRanged()); {
-            ranged = item;
-        } else short = item;
+            hand2 = item;
+        } else {
+            hand1 = item;
+        }
     }
 
     // remove item from inventory (copilot)
