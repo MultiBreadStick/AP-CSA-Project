@@ -7,9 +7,9 @@ public class PlayerStats {
     private int maxHealth; 
     private int experience; 
     private int level; 
-    private Weapon weapon; 
     private String name; 
-    private List<Weapon> inventory; // (copilot)
+    private Weapon ranged;
+    private Weapon short;
 
     // constructor
     public PlayerStats(String name)
@@ -19,8 +19,8 @@ public class PlayerStats {
         this.maxHealth = 100;
         this.experience = 0; 
         this.level = 1; 
-        this.weapon = new Weapon();
-        inventory.add(weapon);
+        this.ranged = new Weapon();
+        this.short = new Weapon();
     }
 
     // getters
@@ -53,7 +53,7 @@ public class PlayerStats {
     //    return inventory;
     //}
 
-    // setting the health 
+    // setters for everything that needs it
     public void setCurrentHealth(int currentHealth)
     {
         this.currentHealth = currentHealth; 
@@ -61,6 +61,9 @@ public class PlayerStats {
         {
             this.currentHealth = maxHealth; 
         }
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 
     //leveling up 
@@ -75,15 +78,18 @@ public class PlayerStats {
         }
     }
 
-    // add item to inventory (copilot)
+    
     public void addItemToInventory(Weapon item) {
-        inventory.add(item); 
+        if (item.getIsRanged()); {
+            ranged = item;
+        } else short = item;
     }
 
     // remove item from inventory (copilot)
     public void removeItemFromInventory(Weapon item) {
         inventory.remove(item); 
     }
+
     //returns all of the player's information
     public String toString()
     {
