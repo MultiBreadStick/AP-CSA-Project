@@ -9,7 +9,7 @@ public class main {
 
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
-        window.setTitle("Quests of Greg the Crab");
+        window.setTitle("Koo Quest");
 
         window.add(gamePanel);
         window.pack();
