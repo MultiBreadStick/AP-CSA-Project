@@ -23,7 +23,7 @@ public class Attack {
         this.name = name; 
     }
     //to string
-    public String toString() {
-        return getAttackName() + " does " + getAttackDamage() + " damage!";
-    }
+    //public String toString() {
+    //    return getAttackName() + " does " + getEnemyAttackDamage() + " damage!";
+    //}
 }
