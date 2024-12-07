@@ -5,6 +5,7 @@ public class PlayerStats {
     private int maxHealth; 
     private int experience; 
     private int level; 
+    private int speed;
     private String name; 
     private Weapon hand1;
     private Weapon hand2;
@@ -16,7 +17,8 @@ public class PlayerStats {
         this.currentHealth = 100; 
         this.maxHealth = 100;
         this.experience = 0; 
-        this.level = 1; 
+        this.level = 1;
+        this.speed = 4; 
         this.hand1 = new Weapon();
         this.hand2 = new Weapon();
     }
@@ -37,6 +39,9 @@ public class PlayerStats {
     public int getLevel()
     {
         return level; 
+    }
+    public int getSpeed() {
+        return speed;
     }
     public Weapon getWeapon1()
     {
@@ -62,7 +67,9 @@ public class PlayerStats {
     public void setName(String name) {
         this.name = name;
     }
-
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
     //leveling up 
     public void levelingUp(int experience)
     {

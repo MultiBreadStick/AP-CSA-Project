@@ -33,9 +33,6 @@ public class KeyHandler implements KeyListener{
 			rightPressed = true;
 
 		}
-		
-		
-		
 	}
 
     //checks which WASD keys are released

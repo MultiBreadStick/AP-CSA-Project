@@ -48,7 +48,25 @@ public class Player extends Entity{
 	// then cycles through each sprite( 2 for each direction) every 12 frames to create the running animaiton
 	public void update() {
 		if(keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true) {
-			if(keyH.upPressed == true) {
+			if((keyH.upPressed == true && keyH.downPressed == true) || (keyH.rightPressed == true && keyH.leftPressed == true)) {
+				direction = "down";
+			} else if(keyH.upPressed == true && keyH.leftPressed == true) {
+				direction = "up";
+				y -= (int) Math.round(((double)speed / 1.4142));
+				x -= (int) Math.round(((double)speed / 1.4142));
+			} else if(keyH.upPressed == true && keyH.rightPressed == true) {
+				direction = "up";
+				y -= (int) Math.round(((double)speed / 1.4142));
+				x += (int) Math.round(((double)speed / 1.4142));
+			} else if(keyH.downPressed == true && keyH.leftPressed == true) {
+				direction = "up";
+				y += (int) Math.round(((double)speed / 1.4142));
+				x -= (int) Math.round(((double)speed / 1.4142));
+			}else if(keyH.downPressed == true && keyH.rightPressed == true) {
+				direction = "up";
+				y += (int) Math.round(((double)speed / 1.4142));
+				x += (int) Math.round(((double)speed / 1.4142));
+			}else if(keyH.upPressed == true) {
 				direction = "up";
 				y -= speed;
 			}else if (keyH.downPressed == true) {
