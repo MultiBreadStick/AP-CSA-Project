@@ -17,10 +17,10 @@ public class Room {
     public void setLevel(int level) {
         this.level = level;
     }
-
     public boolean getInRoom() {
         return inRoom;
     }
+    
     public void setInRoom(boolean inRoom) {
         this.inRoom = inRoom;
     }

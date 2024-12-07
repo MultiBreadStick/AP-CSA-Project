@@ -6,6 +6,7 @@ import java.awt.event.KeyListener;
 public class KeyHandler implements KeyListener{
 	
 	public boolean upPressed, downPressed, leftPressed, rightPressed;
+//	private PlayerStats player; 
 
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -37,6 +38,7 @@ public class KeyHandler implements KeyListener{
 
     //checks which WASD keys are released
     //we might not need this but it was easy to copy and paste
+	//Pretty sure its not -Cedar
 	@Override
 	public void keyReleased(KeyEvent e) {
 		int code = e.getKeyCode();
@@ -58,4 +60,18 @@ public class KeyHandler implements KeyListener{
 		}
 	}
 	
+
+//	@Override
+//	public void startClass(KeyEvent e) {
+//		int code = e.getKeyCode();
+//		if(code == KeyEvent.VK_1) {
+//			player = Constants.warrior;
+//		}
+//		if(code == KeyEvent.VK_2) {
+//			player = Constants.archer;
+//		}
+//		if(code == KeyEvent.VK_3) {
+//			player = Constants.sorcerer;
+//		}
+//	}
 }

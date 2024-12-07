@@ -14,13 +14,23 @@ public class PlayerStats {
     public PlayerStats(String name)
     {
         this.name = name; 
-        this.currentHealth = 100; 
-        this.maxHealth = 100;
-        this.experience = 0; 
-        this.level = 1;
-        this.speed = 4; 
-        this.hand1 = new Weapon();
-        this.hand2 = new Weapon();
+        currentHealth = 100; 
+        maxHealth = 100;
+        experience = 0; 
+        level = 1;
+        speed = 4; 
+        hand1 = new Weapon();
+        hand2 = new Weapon();
+    }
+    public PlayerStats(int maxHealth, int speed, String name, Weapon hand1, Weapon hand2) {
+        currentHealth = maxHealth;
+        this.maxHealth = maxHealth;
+        experience = 0;
+        level = 1;
+        this.speed = speed;
+        this.name = name;
+        this.hand1 = hand1;
+        this.hand2 = hand2;
     }
 
     // getters

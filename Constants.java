@@ -5,60 +5,50 @@ public class Constants {
     public static final int ROOM_COL_MAX = 5;
 
     //Crab
-    public static final int CRAB_HEALTH = 100;
-    public static final double CRAB_DEFENSE = 1.25;
-    public static final double CRAB_SPEED = 0.75;
-    public static final double CRAB_ATTACK_MULTIPLIER = 1.25;
-    public static final String CRAB_NAME = "Crab";
+    public static final Enemy crab = new Enemy(100, 1.25, 3, 1.25, "Crab", true);
     public static final int CRAB_MAX = 3;
 
     //Goblin
-    public static final int GOBLIN_HEALTH = 50;
-    public static final double GOBLIN_DEFENSE = 1.0;
-    public static final double GOBLIN_SPEED = 1.25;
-    public static final double GOBLIN_ATTACK_MULTIPLIER = 1.0;
-    public static final String GOBLIN_NAME = "Goblin";
+    public static final Enemy goblin = new Enemy(50, 1, 5, 1, "Goblin", false);
     public static final int GOBLIN_MAX = 5;
 
     //Kiffe (yoked)
-    public static final int KIFFE_HEALTH = 100;
-    public static final double KIFFE_DEFENSE = 1.0;
-    public static final double KIFFE_SPEED = 1.0;
-    public static final double KIFFE_ATTACK_MULTIPLIER = 1.25;
-    public static final String KIFFE_NAME = "Kiffe";
+    public static final Enemy kiffe = new Enemy(100, 1, 4, 1.25, "Kiffe", false);
     public static final int KIFFE_MAX = 3;
 
     //Giant
-    public static final int GIANT_HEALTH = 200;
-    public static final double GIANT_DEFENSE = 0.75;
-    public static final double GIANT_SPEED = 0.75;
-    public static final double GIANT_ATTACK_MULTIPLIER = 1.25;
-    public static final String GIANT_NAME = "Giant";
+    public static final Enemy giant = new Enemy(200, 0.75, 3, 1.25, "Giant", false);
     public static final int GIANT_MAX = 2;
 
     //Big rock
-    public static final int BIG_ROCK_HEALTH = 150;
-    public static final double BIG_ROCK_DEFNESE = 1.25;
-    public static final double BIG_ROCK_SPEED = 0.5;
-    public static final double BIG_ROCK_ATTACK_MULTIPLIER = 0.75;
-    public static final String BIG_ROCK_NAME = "Big rock";
+    public static final Enemy bigRock = new Enemy(150, 1.25, 2, 0.75, "Big Rock", false);
+    public static final int BIG_ROCK_MAX = 2;
 
 
 
     //Sword
-    public static final double SWORD_MULTIPLIER = 1.5;
-    public static final double SWORD_WEAPON_SPEED = 1.5;
-    public static final String SWORD_NAME = "Sword";
-    public static final boolean SWORD_IS_RANGED = false;
+    public static final Weapon sword = new Weapon(1.5, 1.5, "Sword", false);
 
     //Hammer
-    public static final double HAMMER_MULTIPLIER = 3.0;
-    public static final double HAMMER_WEAPON_SPEED = 0.75;
-    public static final String HAMMER_NAME = "Hammer";
-    public static final boolean HAMMER_IS_RANGED = false;
+    public static final Weapon hammer = new Weapon(3, 0.75, "Hammer", false);
 
     //Bow
-    public static final double BOW_MULTIPLIER = 1.25;
-    public static final double BOW_WEAPON_SPEED = 1.0;
-    
+    public static final Weapon bow = new Weapon(1.25, 1.25, "Bow", true);
+
+    //Spells
+    public static final Weapon spell = new Weapon(1.5, 1, "Spell", true);
+
+    //empty
+    public static final Weapon empty = new Weapon();
+
+
+
+    //Warrior
+    PlayerStats warrior = new PlayerStats(125, 4, "Koo", sword, empty);
+
+    //Archer
+    PlayerStats archer = new PlayerStats(90, 6, "Koo", empty, bow);
+
+    //Sorcerer
+    PlayerStats sorcerer = new PlayerStats(75, 5, "Koo", empty, spell);
 }

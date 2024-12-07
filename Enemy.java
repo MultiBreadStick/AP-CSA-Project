@@ -3,13 +3,13 @@ public class Enemy {
 
     private int health;
     private double defense;
-    private double speed;
+    private int speed;
     private double attackMultiplier;
     private String name;
     private boolean isDead;
     private boolean isRanged;
     
-    public Enemy(int health, double defense, double speed, double attackMultiplier, String name, String type, boolean isRanged) {
+    public Enemy(int health, double defense, int speed, double attackMultiplier, String name, boolean isRanged) {
         this.health = health;
         this.defense = defense;
         this.speed = speed;
@@ -36,10 +36,10 @@ public class Enemy {
     }
 
     //Get, set speed
-    public double getSpeed () {
+    public int getSpeed () {
         return speed;
     }
-    public void setSpeed (double speed) {
+    public void setSpeed (int speed) {
         this.speed = speed;
     }
 
