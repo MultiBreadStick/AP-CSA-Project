@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
 
 public class PlayerStats {
     //initialize variables 
@@ -40,20 +38,19 @@ public class PlayerStats {
     {
         return level; 
     }
-    public Weapon getWeapon()
+    public Weapon getWeapon1()
     {
-        return weapon; 
+        return hand1; 
+    }
+    public Weapon getWeapon2() 
+    {
+        return hand2;
     }
     public String getName()
     {
         return name; 
     }
-    // (copilot)
-    //public List<String> getInventory() {
-    //    return inventory;
-    //}
 
-    // setters for everything that needs it
     public void setCurrentHealth(int currentHealth)
     {
         this.currentHealth = currentHealth; 
@@ -82,20 +79,15 @@ public class PlayerStats {
     public void addItemToInventory(Weapon item) {
         if (item.getIsRanged()); {
             hand2 = item;
-        } else {
+        } if (!item.getIsRanged()){  //else statement didn't work for some reason
             hand1 = item;
         }
-    }
-
-    // remove item from inventory (copilot)
-    public void removeItemFromInventory(Weapon item) {
-        inventory.remove(item); 
     }
 
     //returns all of the player's information
     public String toString()
     {
-        return "Name: " + name + "\n" + "Level: " + level + "\n" + "Experience: " + experience + "\n" + "Health: " + currentHealth + "/" + maxHealth + "\n" + "Weapon: " + weapon.toString();
+        return "Name: " + name + "\n" + "Level: " + level + "\n" + "Experience: " + experience + "\n" + "Health: " + currentHealth + "/" + maxHealth + "\n" + "Weapon: " + hand1.toString() + " " + hand2.toString();
     }
 }
 

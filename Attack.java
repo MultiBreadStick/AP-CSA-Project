@@ -10,11 +10,11 @@ public class Attack {
         this.weapon = weapon;
     }
     //getter/setters
-    public double getEnemyAttackDamage(Enemy enemy) {
-        return damage * weapon.getMultiplier() * enemy.getAttackMultiplier();
+    public int getEnemyAttackDamage(Enemy enemy) {
+        return (int)(damage * weapon.getMultiplier() * enemy.getAttackMultiplier());
     }
-    public double getPlayerAttackDamage() {
-        return damage * weapon.getMultiplier();
+    public int getPlayerAttackDamage() {
+        return (int)(damage * weapon.getMultiplier());
     }
     public String getAttackName() {
         return name;
