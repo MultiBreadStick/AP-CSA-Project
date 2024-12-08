@@ -15,8 +15,8 @@ public class Attack {
     public int getEnemyAttackDamage(Enemy enemy) {
         return (int)(damage * weapon.getMultiplier() * enemy.getAttackMultiplier());
     }
-    public int getPlayerAttackDamage() {
-        return (int)(damage * weapon.getMultiplier());
+    public int getPlayerAttackDamage(Enemy enemy) {
+        return (int)(damage * weapon.getMultiplier() * enemy.getDefense());
     }
     public String getAttackName() {
         return name;

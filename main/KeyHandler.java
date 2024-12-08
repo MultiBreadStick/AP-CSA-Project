@@ -10,9 +10,6 @@ public class KeyHandler implements KeyListener{
 	public boolean upPressed, downPressed, leftPressed, rightPressed;
 	public PlayerStats player; 
 
-    public void keyTyped(KeyEvent e) {
-		
-	}
     //checks which WASD keys are being pressed
 	@Override
 	public void keyPressed(KeyEvent e) {
@@ -60,17 +57,17 @@ public class KeyHandler implements KeyListener{
 	}
 	
 
-//	@Override
-//	public void keyTyped(KeyEvent e) {
-//		int code = e.getKeyCode();
-//		if(code == KeyEvent.VK_1) {
-//			player = Constants.warrior;
-//		}
-//		if(code == KeyEvent.VK_2) {
-//			player = Constants.archer;
-//		}
-//		if(code == KeyEvent.VK_3) {
-//			player = Constants.sorcerer;
-//		}
-//	}
+	@Override
+	public void keyTyped(KeyEvent e) {
+		int code = e.getKeyCode();
+		if(code == KeyEvent.VK_1) {
+			player = Constants.warrior;
+		}
+		if(code == KeyEvent.VK_2) {
+			player = Constants.archer;
+		}
+		if(code == KeyEvent.VK_3) {
+			player = Constants.sorcerer;
+		}
+	}
 }

@@ -7,23 +7,28 @@ public class Constants {
     public static final int ROOM_COL_MAX = 5;
 
     //Crab
-    public static final Enemy crab = new Enemy(100, 1.25, 3, 1.25, "Crab", true);
+    public static final Enemy crab = new Enemy(100, 0.75, 3, 1.25, "Crab", true);
+    public static final int CRAB_MIN = 2;
     public static final int CRAB_MAX = 3;
 
     //Goblin
-    public static final Enemy goblin = new Enemy(50, 1, 5, 1, "Goblin", false);
+    public static final Enemy goblin = new Enemy(50, 1, 6, 1, "Goblin", false);
+    public static final int GOBLIN_MIN = 3;
     public static final int GOBLIN_MAX = 5;
 
     //Kiffe (yoked)
     public static final Enemy kiffe = new Enemy(100, 1, 4, 1.25, "Kiffe", false);
+    public static final int KIFFE_MIN = 2;
     public static final int KIFFE_MAX = 3;
 
     //Giant
-    public static final Enemy giant = new Enemy(200, 0.75, 3, 1.25, "Giant", false);
+    public static final Enemy giant = new Enemy(200, 1.25, 3, 1.25, "Giant", false);
+    public static final int GIANT_MIN = 1;
     public static final int GIANT_MAX = 2;
 
     //Big rock
-    public static final Enemy bigRock = new Enemy(150, 1.25, 2, 0.75, "Big Rock", false);
+    public static final Enemy bigRock = new Enemy(150, 0.75, 2, 0.75, "Big Rock", false);
+    public static final int BIG_ROCK_MIN = 1;
     public static final int BIG_ROCK_MAX = 2;
 
 
@@ -46,11 +51,11 @@ public class Constants {
 
 
     //Warrior
-    PlayerStats warrior = new PlayerStats(125, 4, "Koo", sword, empty);
+    public static final PlayerStats warrior = new PlayerStats(125, 4, "Koo", sword, empty);
 
     //Archer
-    PlayerStats archer = new PlayerStats(90, 6, "Koo", empty, bow);
+    public static final PlayerStats archer = new PlayerStats(90, 6, "Koo", empty, bow);
 
     //Sorcerer
-    PlayerStats sorcerer = new PlayerStats(75, 5, "Koo", empty, spell);
+    public static final PlayerStats sorcerer = new PlayerStats(75, 5, "Koo", empty, spell);
 }
