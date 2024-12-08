@@ -59,11 +59,11 @@ public class Player extends Entity{
 				y -= (int) Math.round(((double)speed / 1.4142));
 				x += (int) Math.round(((double)speed / 1.4142));
 			} else if(keyH.downPressed == true && keyH.leftPressed == true) {
-				direction = "up";
+				direction = "down";
 				y += (int) Math.round(((double)speed / 1.4142));
 				x -= (int) Math.round(((double)speed / 1.4142));
 			}else if(keyH.downPressed == true && keyH.rightPressed == true) {
-				direction = "up";
+				direction = "down";
 				y += (int) Math.round(((double)speed / 1.4142));
 				x += (int) Math.round(((double)speed / 1.4142));
 			}else if(keyH.upPressed == true) {

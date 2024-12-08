@@ -1,3 +1,5 @@
+package mainObjects;
+
 public class Attack {
     //instance declaration
     private int damage;

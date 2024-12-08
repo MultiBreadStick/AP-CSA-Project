@@ -1,3 +1,6 @@
+package mainObjects;
+
+
 public class Room {
     private int level;
     private boolean inRoom;

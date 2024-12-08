@@ -1,3 +1,5 @@
+package mainObjects;
+
 public class Map {
     //Instance variables
     private Room[][] map;

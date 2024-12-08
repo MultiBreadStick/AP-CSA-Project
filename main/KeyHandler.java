@@ -1,19 +1,18 @@
 package main;
 
+import mainObjects.PlayerStats;
+import mainObjects.Constants;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener{
 	
 	public boolean upPressed, downPressed, leftPressed, rightPressed;
-//	private PlayerStats player; 
+	public PlayerStats player; 
 
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
+    public void keyTyped(KeyEvent e) {
 		
 	}
-    
     //checks which WASD keys are being pressed
 	@Override
 	public void keyPressed(KeyEvent e) {
@@ -62,7 +61,7 @@ public class KeyHandler implements KeyListener{
 	
 
 //	@Override
-//	public void startClass(KeyEvent e) {
+//	public void keyTyped(KeyEvent e) {
 //		int code = e.getKeyCode();
 //		if(code == KeyEvent.VK_1) {
 //			player = Constants.warrior;

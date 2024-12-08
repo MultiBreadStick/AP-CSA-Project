@@ -1,3 +1,5 @@
+package mainObjects;
+
 public class Constants {
     
     //Room array

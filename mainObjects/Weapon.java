@@ -1,3 +1,6 @@
+package mainObjects;
+
+
 public class Weapon {
     private double multiplier;
     private double weaponSpeed;

@@ -1,3 +1,4 @@
+package mainObjects;
 
 public class PlayerStats {
     //initialize variables 
@@ -11,9 +12,9 @@ public class PlayerStats {
     private Weapon hand2;
 
     // constructor
-    public PlayerStats(String name)
+    public PlayerStats()
     {
-        this.name = name; 
+        name = "Koo"; 
         currentHealth = 100; 
         maxHealth = 100;
         experience = 0; 
