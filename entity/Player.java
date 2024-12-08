@@ -9,11 +9,14 @@ import javax.imageio.ImageIO;
 
 import main.GamePanel;
 import main.KeyHandler;
+import mainObjects.Map;
+import mainObjects.Room;
 
 public class Player extends Entity{
 	
 	GamePanel gp;
 	KeyHandler keyH;
+	public Map map;
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
 		this.gp = gp;
@@ -78,6 +81,31 @@ public class Player extends Entity{
 			}else if (keyH.rightPressed == true) {
 				direction = "right";
 				x += speed;
+			}
+
+			//Boundary wall
+			//Good enough for now but i need to figure out debugging menu
+			if (x >= 1050) {
+				x = 1050;
+			} else if (x <= 50) {
+				x = 50;
+			}
+			if (y >= 680) {
+				y = 680;
+			} else if (y <= 50) {
+				y = 50;
+			}
+
+			//Next Room
+			//Dead code for now until map is fully figured out
+			if (x <= 575 && x >= 475 && y == 50) {
+				map.nextRoomUp();
+			} else if (x <= 575 && x >= 475 && y == 680) {
+				map.nextRoomDown();
+			} else if (y <= 390 && y >=290 && x == 50) {
+				map.nextRoomLeft();
+			} else if (y <= 390 && y >=290 && x == 1050) {
+				map.nextRoomRight();
 			}
 			
 			spriteCounter++;
