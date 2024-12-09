@@ -57,17 +57,4 @@ public class KeyHandler implements KeyListener{
 	}
 	
 
-	@Override
-	public void keyTyped(KeyEvent e) {
-		int code = e.getKeyCode();
-		if(code == KeyEvent.VK_1) {
-			player = Constants.warrior;
-		}
-		if(code == KeyEvent.VK_2) {
-			player = Constants.archer;
-		}
-		if(code == KeyEvent.VK_3) {
-			player = Constants.sorcerer;
-		}
-	}
 }
