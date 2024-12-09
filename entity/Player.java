@@ -11,14 +11,16 @@ import main.GamePanel;
 import main.KeyHandler;
 import mainObjects.Map;
 import mainObjects.Room;
+import mainObjects.PlayerStats
 
 public class Player extends Entity{
 	
 	GamePanel gp;
 	KeyHandler keyH;
 	public Map map;
+	public PlayerStats player;
 	
-	public Player(GamePanel gp, KeyHandler keyH) {
+	public Player(GamePanel gp, KeyHandler keyH, Map map) {
 		this.gp = gp;
 		this.keyH = keyH;
 		setDefaultValues();
@@ -28,7 +30,7 @@ public class Player extends Entity{
 	public void setDefaultValues() {
 		x = 100;
 		y = 100;
-		speed = 4;
+		speed = player.getSpeed();
 		direction = "down";
 	}
 	//Acesses the sprite files and defines the coresponding directions
