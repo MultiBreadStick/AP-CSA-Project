@@ -4,13 +4,10 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
-
 import main.GamePanel;
 import main.KeyHandler;
 import mainObjects.Map;
-import mainObjects.Room;
 import mainObjects.PlayerStats;
 
 public class Player extends Entity{
@@ -30,7 +27,7 @@ public class Player extends Entity{
 	public void setDefaultValues() {
 		x = 496;
 		y = 284;
-		speed = player.getSpeed();
+		speed = 4;
 		direction = "down";
 	}
 	//Acesses the sprite files and defines the coresponding directions
@@ -85,6 +82,18 @@ public class Player extends Entity{
 				x += speed;
 			}
 
+			//Next Room
+			//Dead code for now until map is fully figured out
+			if (x <= 575 && x >= 475 && y == 50) {
+				map.nextRoomUp();
+			} else if (x <= 575 && x >= 475 && y == 680) {
+				map.nextRoomDown();
+			} else if (y <= 390 && y >=290 && x == 50) {
+				map.nextRoomLeft();
+			} else if (y <= 390 && y >=290 && x == 1050) {
+				map.nextRoomRight();
+			}
+
 			//Boundary wall
 			//Good enough for now but i need to figure out debugging menu
 			if (x >= 992) {
@@ -98,17 +107,6 @@ public class Player extends Entity{
 				y = 160;
 			}
 
-			//Next Room
-			//Dead code for now until map is fully figured out
-			if (x <= 575 && x >= 475 && y == 50) {
-				map.nextRoomUp();
-			} else if (x <= 575 && x >= 475 && y == 680) {
-				map.nextRoomDown();
-			} else if (y <= 390 && y >=290 && x == 50) {
-				map.nextRoomLeft();
-			} else if (y <= 390 && y >=290 && x == 1050) {
-				map.nextRoomRight();
-			}
 			
 			spriteCounter++;
 			if(spriteCounter > 12) {
