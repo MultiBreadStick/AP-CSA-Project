@@ -28,8 +28,8 @@ public class Player extends Entity{
 	}
 	//Sets the player starting position, move speed, and direction of movment and sprite
 	public void setDefaultValues() {
-		x = 100;
-		y = 100;
+		x = 496;
+		y = 284;
 		speed = player.getSpeed();
 		direction = "down";
 	}
@@ -87,15 +87,15 @@ public class Player extends Entity{
 
 			//Boundary wall
 			//Good enough for now but i need to figure out debugging menu
-			if (x >= 1050) {
-				x = 1050;
-			} else if (x <= 50) {
-				x = 50;
+			if (x >= 992) {
+				x = 992;
+			} else if (x <= 160) {
+				x = 160;
 			}
-			if (y >= 680) {
-				y = 680;
-			} else if (y <= 50) {
-				y = 50;
+			if (y >= 608) {
+				y = 608;
+			} else if (y <= 160) {
+				y = 160;
 			}
 
 			//Next Room
