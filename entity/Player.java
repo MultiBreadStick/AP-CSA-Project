@@ -51,7 +51,6 @@ public class Player extends Entity{
 	public void update() {
 		if(keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true) {
 			if((keyH.upPressed == true && keyH.downPressed == true) || (keyH.rightPressed == true && keyH.leftPressed == true)) {
-				direction = "down";
 			} else if(keyH.upPressed == true && keyH.leftPressed == true) {
 				direction = "left";
 				y -= (int) Math.round(((double)speed / 1.4142));
