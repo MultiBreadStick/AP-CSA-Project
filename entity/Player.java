@@ -11,7 +11,7 @@ import main.GamePanel;
 import main.KeyHandler;
 import mainObjects.Map;
 import mainObjects.Room;
-import mainObjects.PlayerStats
+import mainObjects.PlayerStats;
 
 public class Player extends Entity{
 	
