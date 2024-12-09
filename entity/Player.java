@@ -20,7 +20,7 @@ public class Player extends Entity{
 	public Map map;
 	public PlayerStats player;
 	
-	public Player(GamePanel gp, KeyHandler keyH, Map map) {
+	public Player(GamePanel gp, KeyHandler keyH) {
 		this.gp = gp;
 		this.keyH = keyH;
 		setDefaultValues();
