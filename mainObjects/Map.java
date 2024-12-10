@@ -1,9 +1,15 @@
 package mainObjects;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
 public class Map {
     //Instance variables
     private Room[][] map;
     private int stageLevel;
+    public BufferedImage botLeft, botRight, topLeft, topRight, bot, top, right, left, middle;
 
     
     //Constructor
@@ -63,4 +69,20 @@ public class Map {
             }
         }
     }
+
+    public void getMapImage() {
+		try {
+			botLeft = ImageIO.read(new File("Sprites/GrassRoom/25.png"));
+			botRight = ImageIO.read(new File("Sprites/GrassRoom/26.png"));
+			topLeft = ImageIO.read(new File("Sprites/GrassRoom/23.png"));
+			topRight = ImageIO.read(new File("Sprites/GrassRoom/22.png"));
+			left = ImageIO.read(new File("Sprites/GrassRoom/34.png"));
+			right = ImageIO.read(new File("Sprites/GrassRoom/33.png"));
+			top = ImageIO.read(new File("Sprites/GrassRoom/32.png"));
+			bot = ImageIO.read(new File("Sprites/GrassRoom/31.png"));
+            middle = ImageIO.read(new File("Sprites/GrassRoom/41.png"));
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
 } 
