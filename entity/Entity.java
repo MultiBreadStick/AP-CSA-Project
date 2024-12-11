@@ -1,4 +1,4 @@
-package entity;
+package Entity; //sigma sigma on the wall im the skividiest of them all 
 
 import java.awt.image.BufferedImage;
 // general class that has the basic veriables needed for an entity

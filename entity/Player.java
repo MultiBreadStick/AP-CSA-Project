@@ -1,4 +1,4 @@
-package entity;
+package Entity;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -17,6 +17,7 @@ public class Player extends Entity{
 	KeyHandler keyH;
 	public Map map;
 	public PlayerStats player;
+	private boolean keyPressed;
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
 		this.gp = gp;
@@ -55,6 +56,7 @@ public class Player extends Entity{
 	// then cycles through each sprite( 2 for each direction) every 12 frames to create the running animaiton
 	public void update() {
 		if(keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true) {
+			keyPressed = true;
 			if((keyH.upPressed == true && keyH.downPressed == true) || (keyH.rightPressed == true && keyH.leftPressed == true)) {
 			} else if(keyH.upPressed == true && keyH.leftPressed == true) {
 				direction = "left";
@@ -88,13 +90,13 @@ public class Player extends Entity{
 
 			//Next Room
 			//Dead code for now until map is fully figured out
-			if (x <= 575 && x >= 475 && y == 50) {
+			if (x <= 970 && x >= 900 && y == 140) {
 				map.nextRoomUp();
-			} else if (x <= 575 && x >= 475 && y == 680) {
+			} else if (x <= 970 && x >= 970 && y == 680) {
 				map.nextRoomDown();
-			} else if (y <= 390 && y >=290 && x == 50) {
+			} else if (y <= 390 && y >= 450 && x == 50) {
 				map.nextRoomLeft();
-			} else if (y <= 390 && y >=290 && x == 1050) {
+			} else if (y <= 0 && y >= 450 && x == 1740) {
 				map.nextRoomRight();
 			}
 
@@ -102,13 +104,13 @@ public class Player extends Entity{
 			//Good enough for now but i need to figure out debugging menu
 			if (x >= Constants.MAX_X-180) {
 				x = Constants.MAX_X-180;
-			} else if (x <= 140) {
-				x = 140;
+			} else if (x <= 100) {
+				x = 100;
 			}
-			if (y >= Constants.MAX_Y-180) {
-				y = Constants.MAX_Y-180;
-			} else if (y <= 140) {
-				y = 140;
+			if (y >= Constants.MAX_Y-130-192) {
+				y = Constants.MAX_Y-130-192;
+			} else if (y <= 150-192) {//wall size minus player
+				y = 150-192;
 			}
 
 			
@@ -121,6 +123,8 @@ public class Player extends Entity{
 				}
 				spriteCounter = 0;
 			}
+		}else{
+			keyPressed = false;
 		}
 		
 	}
@@ -130,35 +134,51 @@ public class Player extends Entity{
 		BufferedImage image = null;
 		switch(direction) {
 		case "up":
-			if(spriteNum == 1) {
-				image = up1;
-			}if(spriteNum == 2) {
+			if(keyPressed){
+				if(spriteNum == 1) {
 				image = up2;
+				}if(spriteNum == 2) {
+				image = up3;
+			}
+			}else{
+				image = up1;
 			}
 			break;
 		case "down":
-			if(spriteNum == 1) {
-				image = down1;
-			}if(spriteNum == 2) {
+			if(keyPressed){
+				if(spriteNum == 1) {
 				image = down2;
+				}if(spriteNum == 2) {
+				image = down3;
+			}
+			}else{
+				image = down1;
 			}
 			break;
 		case "left":
-			if(spriteNum == 1) {
-				image = left1;
-			}if(spriteNum == 2) {
+			if(keyPressed){
+				if(spriteNum == 1) {
 				image = left2;
+				}if(spriteNum == 2) {
+				image = left3;
+			}
+			}else{
+				image = left1;
 			}
 			break;
 		case "right":
-			if(spriteNum == 1) {
-				image = right1;
-			}if(spriteNum == 2) {
+			if(keyPressed){
+				if(spriteNum == 1) {
 				image = right2;
+				}if(spriteNum == 2) {
+				image = right3;
+			}
+			}else{
+				image = right1;
 			}
 			break;
 		}
-		g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+		g2.drawImage(image, x, y, 4*gp.tileSize, 4*gp.tileSize, null);
 
 	}
 }

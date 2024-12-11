@@ -81,7 +81,7 @@ public class Map {
     public BufferedImage getRoomImage() {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
-                if (map[i][j].getInRoom() && j != 0) {
+                if (map[i][j].getInRoom()) {
                     if (j == 0 && i == 0) {
                         image = botLeft;
                     } else if (j == 0 && i == 4) {
@@ -122,7 +122,7 @@ public class Map {
 	}
 	public void draw(Graphics2D g2) {
 		BufferedImage image = null;
-        image = getRoomImage();
+        image = middle;
 		g2.drawImage(image, 0, 0, Constants.MAX_X, Constants.MAX_Y, null);
     } 
 } 
