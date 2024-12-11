@@ -6,6 +6,9 @@ public class Constants {
     public static final int ROOM_ROW_MAX = 5;
     public static final int ROOM_COL_MAX = 5;
 
+    public static final int MAX_X = 16*120;
+    public static final int MAX_Y = 9*120;
+
     //Crab
     public static final Enemy crab = new Enemy(100, 0.75, 3, 1.25, "Crab", true);
     public static final int CRAB_MIN = 2;
