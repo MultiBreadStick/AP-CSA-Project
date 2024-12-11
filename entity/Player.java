@@ -128,7 +128,6 @@ public class Player extends Entity{
 	// then it actually draws the player onto the screen in whatever location its supposed to be in
 	public void draw(Graphics2D g2) {
 		BufferedImage image = null;
-		if(
 		switch(direction) {
 		case "up":
 			if(spriteNum == 1) {
