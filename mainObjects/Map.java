@@ -21,11 +21,11 @@ public class Map {
                 if (roomGen == 9) {
                     map[i][j] = new Room(stageLevel, false, "treasure");
                 } else {
-                    map[i][j] = new Room(stageLevel, false, "monster");
+                    map[i][j] = new Room(stageLevel, false, "Crab", (int)(Math.random * 3 + 1));
                 }
             }
         }
-        map[0][0] = new Room(stageLevel, true, "empty");
+        map[0][0] = new Room(stageLevel, true, "empty", 0);
     }
 
     //move room
