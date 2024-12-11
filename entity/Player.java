@@ -35,14 +35,18 @@ public class Player extends Entity{
 	// the try catch is just in case the sprite files do not exist in the referenced location and cannot be acessed
 	public void getPlayerImage() {
 		try {
-			up1 = ImageIO.read(new File("entity/playerSprites/sprite.png"));
-			up2 = ImageIO.read(new File("entity/playerSprites/sprite.png"));
-			down1 = ImageIO.read(new File("entity/playerSprites/sprite.png"));
-			down2 = ImageIO.read(new File("entity/playerSprites/sprite.png"));
-			right1 = ImageIO.read(new File("entity/playerSprites/sprite.png"));
-			right2 = ImageIO.read(new File("entity/playerSprites/sprite.png"));
-			left1 = ImageIO.read(new File("entity/playerSprites/sprite.png"));
-			left2 = ImageIO.read(new File("entity/playerSprites/sprite.png"));
+			up1 = ImageIO.read(new File("Sprites/HazmatGuy/21.png"));
+			up2 = ImageIO.read(new File("Sprites/HazmatGuy/22.png"));
+			up3 = ImageIO.read(new File("Sprites/HazmatGuy/23.png"));
+			down1 = ImageIO.read(new File("Sprites/HazmatGuy/11.png"));
+			down2 = ImageIO.read(new File("Sprites/HazmatGuy/12.png"));
+			down3 = ImageIO.read(new File("Sprites/HazmatGuy/13.png"));
+			right1 = ImageIO.read(new File("Sprites/HazmatGuy/31.png"));
+			right2 = ImageIO.read(new File("Sprites/HazmatGuy/32.png"));
+			right3 = ImageIO.read(new File("Sprites/HazmatGuy/33.png"));
+			left1 = ImageIO.read(new File("Sprites/HazmatGuy/41.png"));
+			left2 = ImageIO.read(new File("Sprites/HazmatGuy/42.png"));
+			left3 = ImageIO.read(new File("Sprites/HazmatGuy/43.png"));
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
@@ -124,6 +128,7 @@ public class Player extends Entity{
 	// then it actually draws the player onto the screen in whatever location its supposed to be in
 	public void draw(Graphics2D g2) {
 		BufferedImage image = null;
+		if(
 		switch(direction) {
 		case "up":
 			if(spriteNum == 1) {
