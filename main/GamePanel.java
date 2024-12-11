@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
+import mainObjects.Map;
 
 public class GamePanel extends JPanel implements Runnable{
 	
@@ -15,14 +16,15 @@ public class GamePanel extends JPanel implements Runnable{
 	public final int tileSize = ogTileSize * scale;
 	final int maxScreenCol = 48;
 	final int maxScreenRow = 32;
-	final int screenWidth = tileSize * maxScreenCol;
-	final int screenHeight = tileSize * maxScreenRow;
+	public final int screenWidth = tileSize * maxScreenCol;
+	public final int screenHeight = tileSize * maxScreenRow;
 	int FPS = 60;
 	
 	//creates the player and key listner
 	KeyHandler keyH = new KeyHandler();
 	Thread gameThread;
 	Player player = new Player(this, keyH);
+	Map map = new Map(1, this);
 	
 	//window constructor based off our variables
 	public GamePanel() {
@@ -73,12 +75,14 @@ public class GamePanel extends JPanel implements Runnable{
 	}
 	public void update() {
 		player.update(); // updates the player state as this is the only thing we have right now, see player class for more
+		//map.update();
 	}
 	
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g); // clears the screen
 		Graphics2D g2 = (Graphics2D)g; // casts to Graphics2D
+		map.draw(g2);
 		player.draw(g2); // draws the player
 		g2.dispose(); // clears the graphics2D resources
 		// see the player class for more
