@@ -11,15 +11,17 @@ public class Map {
     //Instance variables
     private Room[][] map;
     private int stageLevel;
-    public BufferedImage botLeft, botRight, topLeft, topRight, bot, top, right, left, middle;
+    public BufferedImage botLeft, botRight, topLeft, topRight, bot, top, right, left, middle, image;
 
 	GamePanel gp;
 
     
     //Constructor
     public Map(int level, GamePanel gp) {
-	getMapImage();
+	    getMapImage();
         this.stageLevel = level;
+        this.gp = gp;
+        image = botLeft;
 	    map = new Room[5][5];
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
@@ -76,6 +78,33 @@ public class Map {
         }
     }
 
+    public BufferedImage getRoomImage() {
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                if (map[i][j].getInRoom() && j != 0) {
+                    if (j == 0 && i == 0) {
+                        image = botLeft;
+                    } else if (j == 0 && i == 4) {
+                        image = topLeft;
+                    } else if (j == 4 && i == 0) {
+                        image = botRight;
+                    } else if (j == 4 && i == 4) {
+                        image = topRight;
+                    } else if (j == 0) {
+                        image = left;
+                    } else if (j == 4) {
+                        image = right;
+                    } else if (i == 0) {
+                        image = top;
+                    } else if (i == 4) {
+                        image = bot;
+                    } else image = middle;
+                }
+            }
+        }
+        return image;
+    }
+
     public void getMapImage() {
 		try {
 			botLeft = ImageIO.read(new File("Sprites/GrassRoom/25.png"));
@@ -93,7 +122,7 @@ public class Map {
 	}
 	public void draw(Graphics2D g2) {
 		BufferedImage image = null;
-        image = middle;
+        image = getRoomImage();
 		g2.drawImage(image, 0, 0, Constants.MAX_X, Constants.MAX_Y, null);
     } 
 } 
