@@ -19,9 +19,9 @@ public class Map {
             for (int j = 0; j < 5; j++) {
                 int roomGen = (int)(Math.random() * 10);
                 if (roomGen == 9) {
-                    map[i][j] = new Room(stageLevel, false, "treasure");
+                    map[i][j] = new Room(stageLevel, false, "treasure", 0);
                 } else {
-                    map[i][j] = new Room(stageLevel, false, "Crab", (int)(Math.random * 3 + 1));
+                    map[i][j] = new Room(stageLevel, false, "Crab", (int)(Math.random() * 3 + 1));
                 }
             }
         }
