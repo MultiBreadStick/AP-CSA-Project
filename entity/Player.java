@@ -7,6 +7,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import main.GamePanel;
 import main.KeyHandler;
+import mainObjects.Constants;
 import mainObjects.Map;
 import mainObjects.PlayerStats;
 
@@ -95,15 +96,15 @@ public class Player extends Entity{
 
 			//Boundary wall
 			//Good enough for now but i need to figure out debugging menu
-			if (x >= 992) {
-				x = 992;
-			} else if (x <= 160) {
-				x = 160;
+			if (x >= Constants.MAX_X-180) {
+				x = Constants.MAX_X-180;
+			} else if (x <= 140) {
+				x = 140;
 			}
-			if (y >= 608) {
-				y = 608;
-			} else if (y <= 160) {
-				y = 160;
+			if (y >= Constants.MAX_Y-180) {
+				y = Constants.MAX_Y-180;
+			} else if (y <= 140) {
+				y = 140;
 			}
 
 			
