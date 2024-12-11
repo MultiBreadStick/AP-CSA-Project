@@ -1,9 +1,11 @@
 package mainObjects;
 
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import main.GamePanel;
 
 public class Map {
     //Instance variables
@@ -11,10 +13,14 @@ public class Map {
     private int stageLevel;
     public BufferedImage botLeft, botRight, topLeft, topRight, bot, top, right, left, middle;
 
+	GamePanel gp;
+
     
     //Constructor
-    public Map(int level) {
+    public Map(int level, GamePanel gp) {
+	getMapImage();
         this.stageLevel = level;
+	    map = new Room[5][5];
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 int roomGen = (int)(Math.random() * 10);
@@ -85,4 +91,9 @@ public class Map {
 			e.printStackTrace();
 		}
 	}
+	public void draw(Graphics2D g2) {
+		BufferedImage image = null;
+        image = middle;
+		g2.drawImage(image, 0, 0, Constants.MAX_X, Constants.MAX_Y, null);
+    } 
 } 
