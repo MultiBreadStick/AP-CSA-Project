@@ -10,7 +10,6 @@ public class Attack {
     //constructors
     public Attack(int damage, Weapon weapon, int width, int length) {
         this.damage = damage;
-        this.name = name;
         this.weapon = weapon;
         this.width = width;
         this.length = length;
@@ -26,11 +25,4 @@ public class Attack {
     public int getPlayerAttackDamage(Enemy enemy) {
         return (int)(damage * weapon.getMultiplier() * enemy.getDefense() * (int)(Math.random() * 5));
     }
-    public String getAttackName() {
-        return name;
-    }
-    public void setAttackName(String name) {
-        this.name = name; 
-    }
-    
 }
