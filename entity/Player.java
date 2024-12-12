@@ -89,7 +89,6 @@ public class Player extends Entity{
 			}
 
 			//Next Room
-			//Dead code for now until map is fully figured out
 			if (x <= 970 && x >= 900 && y == 140) {
 				map.nextRoomUp();
 			} else if (x <= 970 && x >= 970 && y == 680) {
@@ -101,7 +100,6 @@ public class Player extends Entity{
 			}
 
 			//Boundary wall
-			//Good enough for now but i need to figure out debugging menu
 			if (x >= Constants.MAX_X-180) {
 				x = Constants.MAX_X-180;
 			} else if (x <= 100) {
@@ -123,6 +121,7 @@ public class Player extends Entity{
 				}
 				spriteCounter = 0;
 			}
+			System.out.println(x + " " + y);
 		}else{
 			keyPressed = false;
 		}

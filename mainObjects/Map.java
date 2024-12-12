@@ -122,7 +122,7 @@ public class Map {
 	}
 	public void draw(Graphics2D g2) {
 		BufferedImage image = null;
-        image = middle;
+        image = getRoomImage();
 		g2.drawImage(image, 0, 0, Constants.MAX_X, Constants.MAX_Y, null);
     } 
 } 
