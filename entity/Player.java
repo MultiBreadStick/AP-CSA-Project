@@ -166,11 +166,11 @@ public class Player extends Entity{
 			break;
 		case "left":
 			if(keyPressed){
-				if(spriteCounter<=12){
+				if(spriteCounter3<=12){
 				image = left1;
-				}if(spriteCounter>12&&spriteCounter<=24) {
+				}if(spriteCounter3>12&&spriteCounter3<=24) {
 				image = left2;
-				}if(spriteCounter>24&&spriteCounter<=36) {
+				}if(spriteCounter3>24&&spriteCounter3<=36) {
 				image = left3;
 			}
 			}else{
@@ -179,11 +179,11 @@ public class Player extends Entity{
 			break;
 		case "right":
 			if(keyPressed){
-				if(spriteCounter<=12){
+				if(spriteCounter3<=12){
 				image = right1;
-				}if(spriteCounter>12&&spriteCounter<=24) {
+				}if(spriteCounter3>12&&spriteCounter3<=24) {
 				image = right2;
-				}if(spriteCounter>24&&spriteCounter<=36) {
+				}if(spriteCounter3>24&&spriteCounter3<=36) {
 				image = right3;
 			}
 			}else{
