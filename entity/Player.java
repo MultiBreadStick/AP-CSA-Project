@@ -128,7 +128,7 @@ public class Player extends Entity{
 				spriteCounter = 0;
 			}
 			spriteCounter3++;
-			if(spriteCounter3 > 36) {
+			if(spriteCounter3 > 48) {
 				spriteCounter3 = 0;
 			}
 			System.out.println(x + " " + y);
@@ -172,6 +172,8 @@ public class Player extends Entity{
 				image = left1;
 				}if(spriteCounter3>24&&spriteCounter3<=36) {
 				image = left3;
+				}if(spriteCounter3>36&&spriteCounter3<=48) {
+				image = left1;
 			}
 			}else{
 				image = left1;
@@ -185,6 +187,8 @@ public class Player extends Entity{
 				image = right1;
 				}if(spriteCounter3>24&&spriteCounter3<=36) {
 				image = right3;
+				}if(spriteCounter3>36&&spriteCounter3<=48) {
+				image = right1;
 			}
 			}else{
 				image = right1;
