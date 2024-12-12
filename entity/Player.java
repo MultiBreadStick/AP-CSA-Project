@@ -18,6 +18,7 @@ public class Player extends Entity{
 	public Map map;
 	public PlayerStats player;
 	private boolean keyPressed;
+	private int spriteCounter3 = 0;
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
 		this.gp = gp;
@@ -126,6 +127,10 @@ public class Player extends Entity{
 				}
 				spriteCounter = 0;
 			}
+			spriteCounter3++;
+			if(spriteCounter3 > 36) {
+				spriteCounter3 = 0;
+			}
 			System.out.println(x + " " + y);
 		}else{
 			keyPressed = false;
@@ -161,11 +166,11 @@ public class Player extends Entity{
 			break;
 		case "left":
 			if(keyPressed){
-				if(spriteCounter<=4){
+				if(spriteCounter<=12){
 				image = left1;
-				}if(spriteCounter>4&&spriteCounter<=8) {
+				}if(spriteCounter>12&&spriteCounter<=24) {
 				image = left2;
-				}if(spriteCounter>8&&spriteCounter<=12) {
+				}if(spriteCounter>24&&spriteCounter<=36) {
 				image = left3;
 			}
 			}else{
@@ -174,11 +179,11 @@ public class Player extends Entity{
 			break;
 		case "right":
 			if(keyPressed){
-				if(spriteCounter<=4){
+				if(spriteCounter<=12){
 				image = right1;
-				}if(spriteCounter>4&&spriteCounter<=8) {
+				}if(spriteCounter>12&&spriteCounter<=24) {
 				image = right2;
-				}if(spriteCounter>8&&spriteCounter<=12) {
+				}if(spriteCounter>24&&spriteCounter<=36) {
 				image = right3;
 			}
 			}else{
