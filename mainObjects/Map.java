@@ -9,7 +9,7 @@ import main.GamePanel;
 
 public class Map {
     //Instance variables
-    private Room[][] map;
+    public Room[][] map;
     private int stageLevel;
     public BufferedImage botLeft, botRight, topLeft, topRight, bot, top, right, left, middle, image;
 
