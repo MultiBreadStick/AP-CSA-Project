@@ -10,8 +10,9 @@ public class Enemy {
     private String name;
     private boolean isDead;
     private boolean isRanged;
+    private Attack enemyAttack;
     
-    public Enemy(int health, double defense, int speed, double attackMultiplier, String name, boolean isRanged) {
+    public Enemy(int health, double defense, int speed, double attackMultiplier, String name, boolean isRanged, Attack enemyAttack) {
         this.health = health;
         this.defense = defense;
         this.speed = speed;
@@ -19,6 +20,7 @@ public class Enemy {
         this.name = name;
         isDead = false;
         this.isRanged = isRanged;
+        this.enemyAttack = enemyAttack;
     }
     
     //Get, set health
