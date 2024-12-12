@@ -1,4 +1,4 @@
-package entity;
+package Entity;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -28,8 +28,8 @@ public class Player extends Entity{
 	}
 	//Sets the player starting position, move speed, and direction of movment and sprite
 	public void setDefaultValues() {
-		x = 496;
-		y = 284;
+		x = 450;
+		y = 200;
 		speed = 4;
 		direction = "down";
 	}
@@ -92,12 +92,20 @@ public class Player extends Entity{
 			//Next Room
 			if (x <= 910 && x >= 830 && y <= 15) {
 				map.nextRoomUp();
+				x = 450;
+				y = 200;
 			} else if (x <= 910 && x >= 830 && y >= 745) {
 				map.nextRoomDown();
+				x = 450;
+				y = 200;
 			} else if (y <= 500 && y >= 385 && x <= 85) {
 				map.nextRoomLeft();
+				x = 450;
+				y = 200;
 			} else if (y <= 500 && y >= 385 && x >= 1645) {
 				map.nextRoomRight();
+				x = 450;
+				y = 200;
 			}
 
 			//Boundary wall
@@ -180,5 +188,10 @@ public class Player extends Entity{
 		}
 		g2.drawImage(image, x, y, 4*gp.tileSize, 4*gp.tileSize, null);
 
+	}
+
+	public void setXAndY (int x, int y) {
+		this.x = x;
+		this.y = y;
 	}
 }
