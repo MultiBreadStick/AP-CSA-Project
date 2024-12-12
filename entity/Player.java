@@ -45,7 +45,7 @@ public class Player extends Entity{
 			down3 = ImageIO.read(new File("Sprites/HazmatGuy/13.png"));
 			right1 = ImageIO.read(new File("Sprites/HazmatGuy/31.png"));
 			right2 = ImageIO.read(new File("Sprites/HazmatGuy/32.png"));
-			//right3 = ImageIO.read(new File("Sprites/HazmatGuy/33.png"));
+			right3 = ImageIO.read(new File("Sprites/HazmatGuy/33.png"));
 			left1 = ImageIO.read(new File("Sprites/HazmatGuy/41.png"));
 			left2 = ImageIO.read(new File("Sprites/HazmatGuy/42.png"));
 			left3 = ImageIO.read(new File("Sprites/HazmatGuy/43.png"));
