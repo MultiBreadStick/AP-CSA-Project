@@ -43,7 +43,7 @@ public class Map {
                 if (map[i][j].getInRoom() && j != 4) {
                     map[i][j + 1].setInRoom(true);
                     map[i][j].setInRoom(false);
-                    i = 5;
+                    break;
                 }
             }
         }
@@ -54,7 +54,7 @@ public class Map {
                 if (map[i][j].getInRoom() && j != 0) {
                     map[i][j - 1].setInRoom(true);
                     map[i][j].setInRoom(false);
-                    i = 5;
+                    break;
                 }
             }
         }
@@ -65,7 +65,7 @@ public class Map {
                 if (map[i][j].getInRoom() && i != 4) {
                     map[i + 1][j].setInRoom(true);
                     map[i][j].setInRoom(false);
-                    i = 5;
+                    break;
                 }
             }
         }
@@ -76,7 +76,7 @@ public class Map {
                 if (map[i][j].getInRoom() && i != 0) {
                     map[i - 1][j].setInRoom(true);
                     map[i][j].setInRoom(false);
-                    i = 5;
+                    break;
                 }
             }
         }
