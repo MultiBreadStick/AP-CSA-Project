@@ -1,6 +1,6 @@
 package main;
 
-import Entity.Player;
+import entity.Player;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -23,8 +23,9 @@ public class GamePanel extends JPanel implements Runnable{
 	//creates the player and key listner
 	KeyHandler keyH = new KeyHandler();
 	Thread gameThread;
+	public Map map = new Map(1, this);
 	Player player = new Player(this, keyH);
-	Map map = new Map(1, this);
+	
 	
 	//window constructor based off our variables
 	public GamePanel() {
