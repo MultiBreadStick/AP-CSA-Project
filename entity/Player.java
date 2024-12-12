@@ -92,20 +92,16 @@ public class Player extends Entity{
 			//Next Room
 			if (x <= 910 && x >= 830 && y <= 15) {
 				map.nextRoomUp();
-				x = 450;
-				y = 200;
+				y = 740;
 			} else if (x <= 910 && x >= 830 && y >= 745) {
 				map.nextRoomDown();
-				x = 450;
-				y = 200;
+				y = 20;
 			} else if (y <= 500 && y >= 385 && x <= 85) {
 				map.nextRoomLeft();
-				x = 450;
-				y = 200;
+				x = 1640;
 			} else if (y <= 500 && y >= 385 && x >= 1645) {
 				map.nextRoomRight();
-				x = 450;
-				y = 200;
+				x = 90;
 			}
 
 			//Boundary wall
