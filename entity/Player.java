@@ -167,9 +167,9 @@ public class Player extends Entity{
 		case "left":
 			if(keyPressed){
 				if(spriteCounter3<=12){
-				image = left1;
-				}if(spriteCounter3>12&&spriteCounter3<=24) {
 				image = left2;
+				}if(spriteCounter3>12&&spriteCounter3<=24) {
+				image = left1;
 				}if(spriteCounter3>24&&spriteCounter3<=36) {
 				image = left3;
 			}
@@ -180,9 +180,9 @@ public class Player extends Entity{
 		case "right":
 			if(keyPressed){
 				if(spriteCounter3<=12){
-				image = right1;
-				}if(spriteCounter3>12&&spriteCounter3<=24) {
 				image = right2;
+				}if(spriteCounter3>12&&spriteCounter3<=24) {
+				image = right1;
 				}if(spriteCounter3>24&&spriteCounter3<=36) {
 				image = right3;
 			}
