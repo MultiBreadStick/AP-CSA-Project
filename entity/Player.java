@@ -1,4 +1,4 @@
-package Entity;
+package entity;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -22,6 +22,7 @@ public class Player extends Entity{
 	public Player(GamePanel gp, KeyHandler keyH) {
 		this.gp = gp;
 		this.keyH = keyH;
+		this.map = gp.map;
 		setDefaultValues();
 		getPlayerImage();
 	}
@@ -44,7 +45,7 @@ public class Player extends Entity{
 			down3 = ImageIO.read(new File("Sprites/HazmatGuy/13.png"));
 			right1 = ImageIO.read(new File("Sprites/HazmatGuy/31.png"));
 			right2 = ImageIO.read(new File("Sprites/HazmatGuy/32.png"));
-			right3 = ImageIO.read(new File("Sprites/HazmatGuy/33.png"));
+			//right3 = ImageIO.read(new File("Sprites/HazmatGuy/33.png"));
 			left1 = ImageIO.read(new File("Sprites/HazmatGuy/41.png"));
 			left2 = ImageIO.read(new File("Sprites/HazmatGuy/42.png"));
 			left3 = ImageIO.read(new File("Sprites/HazmatGuy/43.png"));
@@ -89,26 +90,26 @@ public class Player extends Entity{
 			}
 
 			//Next Room
-			if (x <= 970 && x >= 900 && y == 140) {
+			if (x <= 910 && x >= 830 && y <= 15) {
 				map.nextRoomUp();
-			} else if (x <= 970 && x >= 970 && y == 680) {
+			} else if (x <= 910 && x >= 830 && y >= 745) {
 				map.nextRoomDown();
-			} else if (y <= 390 && y >= 450 && x == 50) {
+			} else if (y <= 500 && y >= 385 && x <= 85) {
 				map.nextRoomLeft();
-			} else if (y <= 0 && y >= 450 && x == 1740) {
+			} else if (y <= 500 && y >= 385 && x >= 1645) {
 				map.nextRoomRight();
 			}
 
 			//Boundary wall
-			if (x >= Constants.MAX_X-180) {
-				x = Constants.MAX_X-180;
-			} else if (x <= 100) {
-				x = 100;
+			if (x >= Constants.MAX_X-250) {
+				x = Constants.MAX_X-250;
+			} else if (x <= 60) {
+				x = 60;
 			}
 			if (y >= Constants.MAX_Y-130-192) {
 				y = Constants.MAX_Y-130-192;
-			} else if (y <= 150-192) {//wall size minus player
-				y = 150-192;
+			} else if (y <= 180-192) {//wall size minus player
+				y = 180-192;
 			}
 
 			
