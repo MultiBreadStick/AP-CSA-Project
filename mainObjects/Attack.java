@@ -1,30 +1,78 @@
 package mainObjects;
 
+/**
+ * The Attack class represents an attack action in the game.
+ * It contains information about the attack's damage, type, and other relevant properties.
+ */
 public class Attack {
-    //instance declaration
     private int damage;
-    private Weapon weapon;
-    private int width;
-    private int length;
-    
-    //constructors
-    public Attack(int damage, Weapon weapon, int width, int length) {
+    private String type;
+    private double accuracy;
+
+    /**
+     * Constructs an Attack with the specified damage, type, and accuracy.
+     *
+     * @param damage the damage value of the attack
+     * @param type the type of the attack
+     * @param accuracy the accuracy of the attack
+     */
+    public Attack(int damage, String type, double accuracy) {
         this.damage = damage;
-        this.weapon = weapon;
-        this.width = width;
-        this.length = length;
+        this.type = type;
+        this.accuracy = accuracy;
     }
-    public Attack(int damage, int width, int length) {
+
+    /**
+     * Gets the damage value of the attack.
+     *
+     * @return the damage value of the attack
+     */
+    public int getDamage() {
+        return damage;
+    }
+
+    /**
+     * Sets the damage value of the attack.
+     *
+     * @param damage the new damage value of the attack
+     */
+    public void setDamage(int damage) {
         this.damage = damage;
-        this.width = width;
-        this.length = length;
     }
-    
-    //getter/setters
-    public int getEnemyAttackDamage(Enemy enemy) {
-        return (int)(damage * weapon.getMultiplier() * enemy.getAttackMultiplier() * (int)(Math.random() * 5));
+
+    /**
+     * Gets the type of the attack.
+     *
+     * @return the type of the attack
+     */
+    public String getType() {
+        return type;
     }
-    public int getPlayerAttackDamage(Enemy enemy) {
-        return (int)(damage * weapon.getMultiplier() * enemy.getDefense() * (int)(Math.random() * 5));
+
+    /**
+     * Sets the type of the attack.
+     *
+     * @param type the new type of the attack
+     */
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    /**
+     * Gets the accuracy of the attack.
+     *
+     * @return the accuracy of the attack
+     */
+    public double getAccuracy() {
+        return accuracy;
+    }
+
+    /**
+     * Sets the accuracy of the attack.
+     *
+     * @param accuracy the new accuracy of the attack
+     */
+    public void setAccuracy(double accuracy) {
+        this.accuracy = accuracy;
     }
 }

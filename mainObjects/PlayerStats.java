@@ -1,5 +1,8 @@
 package mainObjects;
 
+/**
+ * The PlayerStats class represents the statistics of a player in the game.
+ */
 public class PlayerStats {
     //initialize variables 
     private int currentHealth;
@@ -11,9 +14,11 @@ public class PlayerStats {
     private Weapon hand1;
     private Weapon hand2;
 
-    // constructor
-    public PlayerStats()
-    {
+    /**
+     * Default constructor for PlayerStats.
+     * Initializes the player with default values.
+     */
+    public PlayerStats() {
         name = "Koo"; 
         currentHealth = 100; 
         maxHealth = 100;
@@ -23,6 +28,16 @@ public class PlayerStats {
         hand1 = new Weapon();
         hand2 = new Weapon();
     }
+
+    /**
+     * Parameterized constructor for PlayerStats.
+     * 
+     * @param maxHealth the maximum health of the player
+     * @param speed the speed of the player
+     * @param name the name of the player
+     * @param hand1 the weapon in the player's first hand
+     * @param hand2 the weapon in the player's second hand
+     */
     public PlayerStats(int maxHealth, int speed, String name, Weapon hand1, Weapon hand2) {
         currentHealth = maxHealth;
         this.maxHealth = maxHealth;
@@ -35,55 +50,115 @@ public class PlayerStats {
     }
 
     // getters
-    public int getCurrentHealth()
-    {
+    /**
+     * Gets the current health of the player.
+     *
+     * @return the current health of the player
+     */
+    public int getCurrentHealth() {
         return currentHealth; 
     }
-    public int getMaxHealth()
-    {
+
+    /**
+     * Gets the maximum health of the player.
+     *
+     * @return the maximum health of the player
+     */
+    public int getMaxHealth() {
         return maxHealth; 
     }
-    public int getExperience()
-    {
+
+    /**
+     * Gets the experience of the player.
+     *
+     * @return the experience of the player
+     */
+    public int getExperience() {
         return experience; 
     }
-    public int getLevel()
-    {
+
+    /**
+     * Gets the level of the player.
+     *
+     * @return the level of the player
+     */
+    public int getLevel() {
         return level; 
     }
+
+    /**
+     * Gets the speed of the player.
+     *
+     * @return the speed of the player
+     */
     public int getSpeed() {
         return speed;
     }
-    public Weapon getWeapon1()
-    {
+
+    /**
+     * Gets the weapon in the player's first hand.
+     *
+     * @return the weapon in the player's first hand
+     */
+    public Weapon getWeapon1() {
         return hand1; 
     }
-    public Weapon getWeapon2() 
-    {
+
+    /**
+     * Gets the weapon in the player's second hand.
+     *
+     * @return the weapon in the player's second hand
+     */
+    public Weapon getWeapon2() {
         return hand2;
     }
-    public String getName()
-    {
+
+    /**
+     * Gets the name of the player.
+     *
+     * @return the name of the player
+     */
+    public String getName() {
         return name; 
     }
 
-    public void setCurrentHealth(int currentHealth)
-    {
+    /**
+     * Sets the current health of the player.
+     *
+     * @param currentHealth the new current health of the player
+     */
+    public void setCurrentHealth(int currentHealth) {
         this.currentHealth = currentHealth; 
-        if (currentHealth > maxHealth)
-        {
+        if (currentHealth > maxHealth) {
             this.currentHealth = maxHealth; 
         }
     }
+
+    /**
+     * Sets the name of the player.
+     *
+     * @param name the new name of the player
+     */
     public void setName(String name) {
         this.name = name;
     }
+
+    /**
+     * Sets the speed of the player.
+     *
+     * @param speed the new speed of the player
+     */
     public void setSpeed(int speed) {
         this.speed = speed;
     }
+
     //leveling up 
-    public void levelingUp(int experience)
-    {
+    /**
+     * Levels up the player based on the given experience.
+     *
+     * @param experience the experience points to level up the player
+     */
+    public void levelingUp(int experience) {
         this.experience += experience;
         while (this.experience >= (level * 2)) {
             this.experience -= (level * 2);
@@ -93,7 +168,6 @@ public class PlayerStats {
         }
     }
 
-    
     public void addItemToInventory(Weapon item) {
         if (item.getIsRanged()); {
             hand2 = item;
@@ -103,11 +177,7 @@ public class PlayerStats {
     }
 
     //returns all of the player's information
-    public String toString()
-    {
+    public String toString() {
         return "Name: " + name + "\n" + "Level: " + level + "\n" + "Experience: " + experience + "\n" + "Health: " + currentHealth + "/" + maxHealth + "\n" + "Weapon: " + hand1.toString() + " " + hand2.toString();
     }
 }
-
-    
-

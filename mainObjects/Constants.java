@@ -10,7 +10,7 @@ public class Constants {
     public static final int MAX_Y = 9*120;
 
     //Crab
-    public static final Attack CRAB_ATTACK = new Attack(20, 15, 15);
+    //public static final Attack CRAB_ATTACK = new Attack(20, 15, 15);
     public static final Enemy crab = new Enemy(100, 0.75, 3, 1.25, "Crab", false, CRAB_ATTACK);
     public static final int CRAB_MIN = 2;
     public static final int CRAB_MAX = 3;
@@ -35,7 +35,10 @@ public class Constants {
     public static final int BIG_ROCK_MIN = 1;
     public static final int BIG_ROCK_MAX = 2;
 
-
+    /**
+     * The stat field represents a statistic value used in the game.
+     */
+    private int stat;
 
     //Sword
     public static final Weapon sword = new Weapon(1.5, 1.5, "Sword", false);
@@ -51,8 +54,6 @@ public class Constants {
 
     //empty
     public static final Weapon empty = new Weapon();
-
-
 
     //Warrior
     public static final PlayerStats warrior = new PlayerStats(125, 4, "Koo", sword, empty);

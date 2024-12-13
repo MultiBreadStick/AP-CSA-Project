@@ -1,6 +1,5 @@
 package mainObjects;
 
-
 public class Weapon {
     private double multiplier;
     private double weaponSpeed;
@@ -36,22 +35,48 @@ public class Weapon {
         this.multiplier = multiplier;
     }
 
+    /**
+     * Gets the speed of the weapon.
+     *
+     * @return the speed of the weapon
+     */
     public double getWeaponSpeed() {
         return weaponSpeed;
     }
+
+    /**
+     * Sets the speed of the weapon.
+     *
+     * @param weaponSpeed the new speed of the weapon
+     */
     public void setWeaponSpeed(double weaponSpeed) {
         this.weaponSpeed = weaponSpeed;
     }
 
+    /**
+     * Checks if the weapon is ranged.
+     *
+     * @return true if the weapon is ranged, false otherwise
+     */
     public boolean getIsRanged() {
         return isRanged;
     }
+
+    /**
+     * Sets whether the weapon is ranged.
+     *
+     * @param isRanged true if the weapon is ranged, false otherwise
+     */
     public void setIsRanged(boolean isRanged) {
         this.isRanged = isRanged;
     }
 
-
-    // returns all of the weapon's information with help from Github Copilot
+    /**
+     * Returns a string representation of the weapon's information.
+     *
+     * @return a string containing the weapon's name, damage multiplier, and speed multiplier
+     */
+    @Override
     public String toString() {
         return "This " + name + " has a damage multiplier of " + multiplier + " and a speed multiplier of " + weaponSpeed + " .";
     }

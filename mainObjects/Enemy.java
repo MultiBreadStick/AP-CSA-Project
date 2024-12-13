@@ -31,39 +31,83 @@ public class Enemy {
         this.health = health;
     }
     
-    //Get, set defense
-    public double getDefense () {
+    /**
+     * Gets the defense value of the enemy.
+     *
+     * @return the defense value of the enemy
+     */
+    public double getDefense() {
         return defense;
     }
-    public void setDefense (double defense) {
+
+    /**
+     * Sets the defense value of the enemy.
+     *
+     * @param defense the new defense value of the enemy
+     */
+    public void setDefense(double defense) {
         this.defense = defense;
     }
 
-    //Get, set speed
-    public int getSpeed () {
+    /**
+     * Gets the speed of the enemy.
+     *
+     * @return the speed of the enemy
+     */
+    public int getSpeed() {
         return speed;
     }
-    public void setSpeed (int speed) {
+
+    /**
+     * Sets the speed of the enemy.
+     *
+     * @param speed the new speed of the enemy
+     */
+    public void setSpeed(int speed) {
         this.speed = speed;
     }
 
-    //Get, set attackMultiplier
-    public double getAttackMultiplier () {
+    /**
+     * Gets the attack multiplier of the enemy.
+     *
+     * @return the attack multiplier of the enemy
+     */
+    public double getAttackMultiplier() {
         return attackMultiplier;
     }
-    public void setAttackMultiplier (double attackMultiplier) {
+
+    /**
+     * Sets the attack multiplier of the enemy.
+     *
+     * @param attackMultiplier the new attack multiplier of the enemy
+     */
+    public void setAttackMultiplier(double attackMultiplier) {
         this.attackMultiplier = attackMultiplier;
     }
 
-    //Get, set name
+    /**
+     * Gets the name of the enemy.
+     *
+     * @return the name of the enemy
+     */
     public String getName() {
         return name; 
     }
+
+    /**
+     * Sets the name of the enemy.
+     *
+     * @param name the new name of the enemy
+     */
     public void setName (String name) {
         this.name = name;
     }
 
-    //Get, set isDead
+    /**
+     * Checks if the enemy is dead.
+     *
+     * @return true if the enemy is dead, false otherwise
+     */
     public boolean getIsDead() {
         return isDead;
     }
