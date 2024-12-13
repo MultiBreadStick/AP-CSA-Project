@@ -14,6 +14,7 @@ public class EnemyAI {
     public BufferedImage enemySprite;
     public Enemy enemy;
     GamePanel gp;
+    int frameCounter;
 
     
 
@@ -26,13 +27,24 @@ public class EnemyAI {
     }
 
     public void enemyMovement(Player player) {
-        if (!(player.x == x && player.y == y)) {
-            int playerChangeX = player.x - x;
-            int playerChangeY = player.y - y;
-            double distance = Math.sqrt(playerChangeX * playerChangeX + playerChangeY * playerChangeY);
-            x += 3*((double)playerChangeX/distance);
-            y += 3*((double)playerChangeY/distance);
+        frameCounter++;
+        if(frameCounter>= 20){
+            frameCounter = 0;
         }
+        
+        int playerChangeX = player.x - x;
+        int playerChangeY = player.y - y;
+        double distance = Math.sqrt(playerChangeX * playerChangeX + playerChangeY * playerChangeY);
+        if(Math.abs(distance)<500){
+            if (!(player.x == x && player.y == y)) {
+                x += 3*((double)playerChangeX/distance);
+                y += 3*((double)playerChangeY/distance);
+            }
+        }else{
+            if(frameCounter == 0){
+            }
+        }
+        
         
     }
 
