@@ -16,6 +16,8 @@ public class Attack {
     }
     public Attack(int damage, int width, int length) {
         this.damage = damage;
+        this.width = width;
+        this.length = length;
     }
     
     //getter/setters

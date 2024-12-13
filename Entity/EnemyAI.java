@@ -2,18 +2,27 @@ package Entity;
 
 import mainObjects.Enemy;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import main.GamePanel;
+import javax.imageio.ImageIO;
+import java.io.IOException;
+import java.awt.Graphics2D;
+
 
 public class EnemyAI {
-    //chatgpt helped start
     int x, y;
-    public BufferedImage enemySprite ;
+    public BufferedImage enemySprite;
     public Enemy enemy;
+    GamePanel gp;
+
     
 
-    public EnemyAI(int x, int y, Enemy enemy) {
+    public EnemyAI(int x, int y, Enemy enemy, GamePanel gp) {
+        this.gp = gp;
         this.enemy = enemy;
         this.x = x;
         this.y = y;
+        getEnemyImage();
     }
 
     public void enemyMovement(Player player) {
@@ -22,5 +31,18 @@ public class EnemyAI {
         double distance = Math.sqrt(playerChangeX * playerChangeX + playerChangeY * playerChangeY);
         x = (int)((double)playerChangeX/distance);
         y = (int)((double)playerChangeY/distance);
+    }
+
+    public void getEnemyImage() {
+        try {
+            enemySprite = ImageIO.read(new File("Entity/playerSprites/sprite.png"));
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void draw(Graphics2D g2) {
+        g2.drawImage(enemySprite, x, y, 2*gp.tileSize, 2*gp.tileSize, null);
     }
 }

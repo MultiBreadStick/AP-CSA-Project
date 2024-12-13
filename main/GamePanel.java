@@ -1,11 +1,14 @@
 package main;
 
 import Entity.Player;
+import Entity.EnemyAI;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
+
+import mainObjects.Constants;
 import mainObjects.Map;
 
 public class GamePanel extends JPanel implements Runnable{
@@ -25,6 +28,7 @@ public class GamePanel extends JPanel implements Runnable{
 	Thread gameThread;
 	public Map map = new Map(1, this);
 	Player player = new Player(this, keyH);
+	EnemyAI enemy = new EnemyAI(200, 200, Constants.crab, this);
 	
 	
 	//window constructor based off our variables
@@ -76,7 +80,7 @@ public class GamePanel extends JPanel implements Runnable{
 	}
 	public void update() {
 		player.update(); // updates the player state as this is the only thing we have right now, see player class for more
-		//map.update();
+		enemy.enemyMovement(player);
 	}
 	
 	
@@ -85,6 +89,7 @@ public class GamePanel extends JPanel implements Runnable{
 		Graphics2D g2 = (Graphics2D)g; // casts to Graphics2D
 		map.draw(g2);
 		player.draw(g2); // draws the player
+		enemy.draw(g2); // draws enemy
 		g2.dispose(); // clears the graphics2D resources
 		// see the player class for more
 	}
