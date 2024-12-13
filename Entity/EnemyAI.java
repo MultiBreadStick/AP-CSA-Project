@@ -1,12 +1,12 @@
 package Entity;
 
-import mainObjects.Enemy;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import main.GamePanel;
-import javax.imageio.ImageIO;
 import java.io.IOException;
-import java.awt.Graphics2D;
+import javax.imageio.ImageIO;
+import main.GamePanel;
+import mainObjects.Enemy;
 
 
 public class EnemyAI {
@@ -29,8 +29,8 @@ public class EnemyAI {
         int playerChangeX = player.x - x;
         int playerChangeY = player.y - y;
         double distance = Math.sqrt(playerChangeX * playerChangeX + playerChangeY * playerChangeY);
-        x = (int)((double)playerChangeX/distance);
-        y = (int)((double)playerChangeY/distance);
+        x += 3*(int)((double)playerChangeX/distance);
+        y += 3*(int)((double)playerChangeY/distance);
     }
 
     public void getEnemyImage() {
