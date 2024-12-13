@@ -26,16 +26,19 @@ public class EnemyAI {
     }
 
     public void enemyMovement(Player player) {
-        int playerChangeX = player.x - x;
-        int playerChangeY = player.y - y;
-        double distance = Math.sqrt(playerChangeX * playerChangeX + playerChangeY * playerChangeY);
-        x += 3*((double)playerChangeX/distance);
-        y += 3*((double)playerChangeY/distance);
+        if (!(player.x == x && player.y == y)) {
+            int playerChangeX = player.x - x;
+            int playerChangeY = player.y - y;
+            double distance = Math.sqrt(playerChangeX * playerChangeX + playerChangeY * playerChangeY);
+            x += 3*((double)playerChangeX/distance);
+            y += 3*((double)playerChangeY/distance);
+        }
+        
     }
 
     public void getEnemyImage() {
         try {
-            enemySprite = ImageIO.read(new File("Entity/playerSprites/sprite.png"));
+            enemySprite = ImageIO.read(new File("Sprites/HazmatGuy/pingas guy.png"));
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -43,6 +46,6 @@ public class EnemyAI {
     }
 
     public void draw(Graphics2D g2) {
-        g2.drawImage(enemySprite, x, y, 2*gp.tileSize, 2*gp.tileSize, null);
+        g2.drawImage(enemySprite, x, y, 4*gp.tileSize, 4*gp.tileSize, null);
     }
 }
