@@ -29,8 +29,8 @@ public class EnemyAI {
         int playerChangeX = player.x - x;
         int playerChangeY = player.y - y;
         double distance = Math.sqrt(playerChangeX * playerChangeX + playerChangeY * playerChangeY);
-        x += 3*(int)((double)playerChangeX/distance);
-        y += 3*(int)((double)playerChangeY/distance);
+        x += 3*((double)playerChangeX/distance);
+        y += 3*((double)playerChangeY/distance);
     }
 
     public void getEnemyImage() {
