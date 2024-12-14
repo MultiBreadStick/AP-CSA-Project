@@ -50,7 +50,7 @@ public class Map {
                     map[i][j + 1].setInRoom(true);
                     map[i][j].setInRoom(false);
                     return;
-                }
+                } else return;
             }
         }
     }
@@ -61,7 +61,7 @@ public class Map {
                     map[i][j - 1].setInRoom(true);
                     map[i][j].setInRoom(false);
                     return;
-                }
+                } else return;
             }
         }
     }
@@ -72,7 +72,7 @@ public class Map {
                     map[i + 1][j].setInRoom(true);
                     map[i][j].setInRoom(false);
                     return;
-                }
+                } else return;
             }
         }
     }
@@ -83,7 +83,7 @@ public class Map {
                     map[i - 1][j].setInRoom(true);
                     map[i][j].setInRoom(false);
                     return;
-                }
+                } else return;
             }
         }
     }
