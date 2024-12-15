@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import main.GamePanel;
+import Entity.Player;
 
 /**
  * The Map class represents the game map consisting of rooms and their images.
@@ -49,6 +50,7 @@ public class Map {
                 if (map[i][j].getInRoom() && j != 4) {
                     map[i][j + 1].setInRoom(true);
                     map[i][j].setInRoom(false);
+                    //player.x = 740;
                     return;
                 } else return;
             }

@@ -9,12 +9,11 @@ import main.GamePanel;
 import mainObjects.Enemy;
 
 
-public class EnemyAI {
-    int x, y;
-    public BufferedImage enemySprite;
+public class EnemyAI extends Entity {
     public Enemy enemy;
     GamePanel gp;
     int frameCounter;
+    private int spriteCounter3 = 0;
 
     
 
@@ -24,6 +23,11 @@ public class EnemyAI {
         this.x = x;
         this.y = y;
         getEnemyImage();
+		direction = "down";
+    }
+
+    public void setDefualtValues() {
+        
     }
 
     public void enemyMovement(Player player) {
@@ -45,19 +49,90 @@ public class EnemyAI {
             }
         }
         
-        
+        if (playerChangeX > 0) {
+			direction = "left";
+		} else if (playerChangeX < 0) {
+			direction = "right";
+		} else if (playerChangeY > 0) {
+			direction = "up";
+		} else if (playerChangeY < 0) {
+			direction = "down";
+		}
+
+		spriteCounter++;
+			if(spriteCounter > 12) {
+				if(spriteNum == 1) {
+					spriteNum = 2;
+				}else if(spriteNum == 2) {
+					spriteNum = 1;
+				}
+				spriteCounter = 0;
+			}
+			spriteCounter3++;
+			if(spriteCounter3 > 48) {
+				spriteCounter3 = 0;
+			}
     }
 
     public void getEnemyImage() {
         try {
-            enemySprite = ImageIO.read(new File("Sprites/HazmatGuy/pingas guy.png"));
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+			up1 = ImageIO.read(new File("Sprites/HazmatGuy/pingus guy.png"));
+			up2 = ImageIO.read(new File("Sprites/HazmatGuy/pingus guy.png"));
+			up3 = ImageIO.read(new File("Sprites/HazmatGuy/pingus guy.png"));
+			down1 = ImageIO.read(new File("Sprites/HazmatGuy/pingus guy1.png"));
+			down2 = ImageIO.read(new File("Sprites/HazmatGuy/pingus guy.png"));
+			down3 = ImageIO.read(new File("Sprites/HazmatGuy/pingus guy.png"));
+			right1 = ImageIO.read(new File("Sprites/HazmatGuy/pingus guy.png"));
+			right2 = ImageIO.read(new File("Sprites/HazmatGuy/pingus guy.png"));
+			right3 = ImageIO.read(new File("Sprites/HazmatGuy/pingus guy.png"));
+			left1 = ImageIO.read(new File("Sprites/HazmatGuy/pingus guy.png"));
+			left2 = ImageIO.read(new File("Sprites/HazmatGuy/pingus guy.png"));
+			left3 = ImageIO.read(new File("Sprites/HazmatGuy/pingus guy.png"));
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
     }
 
     public void draw(Graphics2D g2) {
-        g2.drawImage(enemySprite, x, y, 4*gp.tileSize, 4*gp.tileSize, null);
+        BufferedImage image = null;
+		switch(direction) {
+		case "up":
+			if(spriteNum == 1) {
+				image = up2;
+			}if(spriteNum == 2) {
+				image = up3;
+			}else{
+				image = up1;
+			}
+			break;
+            case "down":
+			if(spriteNum == 1) {
+				image = down2;
+			}if(spriteNum == 2) {
+				image = down3;
+			}else{
+				image = down1;
+			}
+			break;
+            case "left":
+			if(spriteNum == 1) {
+				image = left2;
+			}if(spriteNum == 2) {
+				image = left3;
+			}else{
+				image = left1;
+			}
+			break;
+            case "right":
+			if(spriteNum == 1) {
+				image = right2;
+			}if(spriteNum == 2) {
+				image = right3;
+			}else{
+				image = right1;
+			}
+			break;
+		}
+		g2.drawImage(image, x, y, 4*gp.tileSize, 4*gp.tileSize, null);
     }
 }

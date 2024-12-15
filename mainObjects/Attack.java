@@ -6,9 +6,9 @@ package mainObjects;
  */
 public class Attack {
     private int damage;
-    private String type;
-    private double accuracy;
-
+    private String name;
+    private int width;
+    private int length;
     /**
      * Constructs an Attack with the specified damage, type, and accuracy.
      *
@@ -16,10 +16,11 @@ public class Attack {
      * @param type the type of the attack
      * @param accuracy the accuracy of the attack
      */
-    public Attack(int damage, String type, double accuracy) {
+    public Attack(int damage, String name, int width, int length) {
         this.damage = damage;
-        this.type = type;
-        this.accuracy = accuracy;
+        this.name = name;
+        this.width = width;
+        this.length = length;
     }
 
     /**
@@ -45,8 +46,8 @@ public class Attack {
      *
      * @return the type of the attack
      */
-    public String getType() {
-        return type;
+    public String getName() {
+        return name;
     }
 
     /**
@@ -54,25 +55,21 @@ public class Attack {
      *
      * @param type the new type of the attack
      */
-    public void setType(String type) {
-        this.type = type;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    /**
-     * Gets the accuracy of the attack.
-     *
-     * @return the accuracy of the attack
-     */
-    public double getAccuracy() {
-        return accuracy;
+    public int getWidth() {
+        return width;
+    }
+    public void setWidth(int width) {
+        this.width = width;
     }
 
-    /**
-     * Sets the accuracy of the attack.
-     *
-     * @param accuracy the new accuracy of the attack
-     */
-    public void setAccuracy(double accuracy) {
-        this.accuracy = accuracy;
+    public int getLength() {
+        return width;
     }
-}
+    public void setLength(int length) {
+        this.length = length;
+    }
+} 
