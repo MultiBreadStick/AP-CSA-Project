@@ -1,12 +1,14 @@
 package mainObjects;
 
+import Entity.EnemyAI;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.imageio.ImageIO;
 import main.GamePanel;
-import Entity.Player;
 
 /**
  * The Map class represents the game map consisting of rooms and their images.
@@ -14,6 +16,7 @@ import Entity.Player;
 public class Map {
     // Instance variables
     public Room[][] map;
+    public List<EnemyAI> enemies = new ArrayList<>();
     private int stageLevel;
     public BufferedImage botLeft, botRight, topLeft, topRight, bot, top, right, left, middle, image;
     GamePanel gp;
@@ -42,6 +45,13 @@ public class Map {
         }
         map[0][0] = new Room(stageLevel, true, "empty", 0);
     }
+    //spawn enemies
+    public void spawnEnemies(int enemyNum){
+        for( int i = 0; i > enemyNum; i++){
+            EnemyAI newEnemy = new EnemyAI((int)Math.random()*480, (int)Math.random()*480 , Constants.crab, gp);
+            enemies.add(newEnemy);
+        }
+    }
 
     //move room
     public void nextRoomRight() {
@@ -52,7 +62,7 @@ public class Map {
                     map[i][j].setInRoom(false);
                     //player.x = 740;
                     return;
-                } else return;
+                }
             }
         }
     }
@@ -63,7 +73,7 @@ public class Map {
                     map[i][j - 1].setInRoom(true);
                     map[i][j].setInRoom(false);
                     return;
-                } else return;
+                }
             }
         }
     }
@@ -74,7 +84,7 @@ public class Map {
                     map[i + 1][j].setInRoom(true);
                     map[i][j].setInRoom(false);
                     return;
-                } else return;
+                }
             }
         }
     }
@@ -85,9 +95,13 @@ public class Map {
                     map[i - 1][j].setInRoom(true);
                     map[i][j].setInRoom(false);
                     return;
-                } else return;
+                }
             }
         }
+    }
+
+    public boolean mapInRoom(int i, int j) {
+        return map[i][j].getInRoom();
     }
 
     public BufferedImage getRoomImage() {
@@ -140,5 +154,8 @@ public class Map {
         BufferedImage image = null;
         image = getRoomImage();
         g2.drawImage(image, 0, 0, Constants.MAX_X, Constants.MAX_Y, null);
+        for (EnemyAI enemy : enemies) {
+        enemy.draw(g2);
+        }
     } 
 }
