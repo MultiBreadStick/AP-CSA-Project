@@ -80,7 +80,9 @@ public class GamePanel extends JPanel implements Runnable{
 	}
 	public void update() {
 		player.update(); // updates the player state as this is the only thing we have right now, see player class for more
-		enemy.enemyMovement(player);
+		for(EnemyAI enemy : map.enemies){
+			enemy.enemyMovement(player);
+		}
 	}
 	
 	
@@ -89,7 +91,6 @@ public class GamePanel extends JPanel implements Runnable{
 		Graphics2D g2 = (Graphics2D)g; // casts to Graphics2D
 		map.draw(g2);
 		player.draw(g2); // draws the player
-		enemy.draw(g2); // draws enemy
 		g2.dispose(); // clears the graphics2D resources
 		// see the player class for more
 	}
