@@ -76,18 +76,18 @@ public class EnemyAI extends Entity {
 
     public void getEnemyImage() {
         try {
-			up1 = ImageIO.read(new File("Sprites/HazmatGuy/pingus guy.png"));
-			up2 = ImageIO.read(new File("Sprites/HazmatGuy/pingus guy.png"));
-			up3 = ImageIO.read(new File("Sprites/HazmatGuy/pingus guy.png"));
-			down1 = ImageIO.read(new File("Sprites/HazmatGuy/pingus guy1.png"));
-			down2 = ImageIO.read(new File("Sprites/HazmatGuy/pingus guy.png"));
-			down3 = ImageIO.read(new File("Sprites/HazmatGuy/pingus guy.png"));
-			right1 = ImageIO.read(new File("Sprites/HazmatGuy/pingus guy.png"));
-			right2 = ImageIO.read(new File("Sprites/HazmatGuy/pingus guy.png"));
-			right3 = ImageIO.read(new File("Sprites/HazmatGuy/pingus guy.png"));
-			left1 = ImageIO.read(new File("Sprites/HazmatGuy/pingus guy.png"));
-			left2 = ImageIO.read(new File("Sprites/HazmatGuy/pingus guy.png"));
-			left3 = ImageIO.read(new File("Sprites/HazmatGuy/pingus guy.png"));
+			up1 = ImageIO.read(new File("Sprites/HazmatGuy/pingas guy.png"));
+			up2 = ImageIO.read(new File("Sprites/HazmatGuy/pingas guy.png"));
+			up3 = ImageIO.read(new File("Sprites/HazmatGuy/pingas guy.png"));
+			down1 = ImageIO.read(new File("Sprites/HazmatGuy/pingas guy.png"));
+			down2 = ImageIO.read(new File("Sprites/HazmatGuy/pingas guy.png"));
+			down3 = ImageIO.read(new File("Sprites/HazmatGuy/pingas guy.png"));
+			right1 = ImageIO.read(new File("Sprites/HazmatGuy/pingas guy.png"));
+			right2 = ImageIO.read(new File("Sprites/HazmatGuy/pingas guy.png"));
+			right3 = ImageIO.read(new File("Sprites/HazmatGuy/pingas guy.png"));
+			left1 = ImageIO.read(new File("Sprites/HazmatGuy/pingas guy.png"));
+			left2 = ImageIO.read(new File("Sprites/HazmatGuy/pingas guy.png"));
+			left3 = ImageIO.read(new File("Sprites/HazmatGuy/pingas guy.png"));
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
