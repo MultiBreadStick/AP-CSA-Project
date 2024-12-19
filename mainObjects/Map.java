@@ -47,7 +47,7 @@ public class Map {
     }
     //spawn enemies
     public void spawnEnemies(int enemyNum){
-        for( int i = 0; i > enemyNum; i++){
+        for( int i = 0; i < enemyNum; i++){
             EnemyAI newEnemy = new EnemyAI((int)Math.random()*480, (int)Math.random()*480 , Constants.crab, gp);
             enemies.add(newEnemy);
         }
