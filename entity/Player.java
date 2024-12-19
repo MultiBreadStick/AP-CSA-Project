@@ -92,17 +92,45 @@ public class Player extends Entity{
 
 			//Next Room
 			if (x <= 910 && x >= 830 && y <= 15) {
-				map.nextRoomUp();
-				y = 740;
+				for (int i = 0; i < 5; i++) {
+					for (int j = 0; j < 5; j++) {
+						if (map.mapInRoom(i, j) && !(i == 4)) {
+							map.nextRoomUp();
+							y = 740;
+							return;
+						}
+					}
+				}
 			} else if (x <= 910 && x >= 830 && y >= 745) {
-				map.nextRoomDown();
-				y = 20;
+				for (int i = 0; i < 5; i++) {
+					for (int j = 0; j < 5; j++) {
+						if (map.mapInRoom(i, j) && !(i == 0)) {
+							map.nextRoomDown();
+							y = 20;
+							return;
+						}
+					}
+				}
 			} else if (y <= 500 && y >= 385 && x <= 85) {
-				map.nextRoomLeft();
-				x = 1640;
+				for (int i = 0; i < 5; i++) {
+					for (int j = 0; j < 5; j++) {
+						if (map.mapInRoom(i, j) && !(j == 0)) {
+							map.nextRoomLeft();
+							x = 1640;
+							return;
+						}
+					}
+				}
 			} else if (y <= 500 && y >= 385 && x >= 1645) {
-				map.nextRoomRight();
-				x = 90;
+				for (int i = 0; i < 5; i++) {
+					for (int j = 0; j < 5; j++) {
+						if (map.mapInRoom(i, j) && !(j == 4)) {
+							map.nextRoomRight();
+							x = 90;
+							return;
+						}
+					}
+				}
 			}
 
 			//Boundary wall

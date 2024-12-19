@@ -23,6 +23,13 @@ public class Attack {
         this.length = length;
     }
 
+    public int getEnemyAttackDamage(Enemy enemy) {
+        return (int)(damage * enemy.getAttackMultiplier() * (int)(Math.random() * 5));
+    }
+
+    public int getPlayerAttackDamage(Enemy enemy, Weapon player) {
+        return (int)(damage * player.getMultiplier() * enemy.getDefense() * (int)(Math.random() * 5));
+    }
     /**
      * Gets the damage value of the attack.
      *
@@ -67,7 +74,7 @@ public class Attack {
     }
 
     public int getLength() {
-        return width;
+        return length;
     }
     public void setLength(int length) {
         this.length = length;
