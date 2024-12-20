@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import javax.imageio.ImageIO;
 import main.GamePanel;
 
@@ -47,10 +48,12 @@ public class Map {
     }
     //spawn enemies
     public void spawnEnemies(int enemyNum){
+        Random random = new Random();
         for( int i = 0; i < enemyNum; i++){
-            EnemyAI newEnemy = new EnemyAI((int)Math.random()*480, (int)Math.random()*480 , Constants.crab, gp);
+            EnemyAI newEnemy = new EnemyAI(random.nextInt(1670 - 60 + 1) + 60, random.nextInt(760 - (-10) + 1) - 10, Constants.crab, gp);
             enemies.add(newEnemy);
         }
+        System.out.println(enemies);
     }
 
     //move room
@@ -155,7 +158,7 @@ public class Map {
         image = getRoomImage();
         g2.drawImage(image, 0, 0, Constants.MAX_X, Constants.MAX_Y, null);
         for (EnemyAI enemy : enemies) {
-        enemy.draw(g2);
+            enemy.draw(g2);
         }
     } 
 }
