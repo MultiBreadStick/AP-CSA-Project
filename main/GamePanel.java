@@ -1,14 +1,13 @@
 package main;
 
-import Entity.Player;
 import Entity.EnemyAI;
+import Entity.Entity;
+import Entity.Player;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
-
-import mainObjects.Constants;
 import mainObjects.Map;
 
 public class GamePanel extends JPanel implements Runnable{
@@ -28,8 +27,7 @@ public class GamePanel extends JPanel implements Runnable{
 	Thread gameThread;
 	public Map map = new Map(1, this);
 	Player player = new Player(this, keyH);
-	EnemyAI enemy = new EnemyAI(200, 200, Constants.crab, this);
-	
+
 	
 	//window constructor based off our variables
 	public GamePanel() {
@@ -50,6 +48,7 @@ public class GamePanel extends JPanel implements Runnable{
 	// this is the run op
 	@Override
 	public void run() {
+		map.spawnEnemies(3);
 		double drawInterval = 1000000000/FPS; 
 		double nextDrawTime = System.nanoTime() + drawInterval;
 		// this is te game loop
