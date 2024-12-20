@@ -38,7 +38,7 @@ public class Constants {
     /**
      * The stat field represents a statistic value used in the game.
      */
-    //private int stat;
+    private int stat;
 
     //Sword
     public static final Weapon sword = new Weapon(1.5, 1.5, "Sword", false);
