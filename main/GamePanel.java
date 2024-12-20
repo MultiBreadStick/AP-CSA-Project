@@ -1,12 +1,13 @@
 package main;
 
 import Entity.EnemyAI;
-import Entity.Entity;
 import Entity.Player;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JPanel;
 import mainObjects.Map;
 
@@ -48,7 +49,7 @@ public class GamePanel extends JPanel implements Runnable{
 	// this is the run op
 	@Override
 	public void run() {
-		map.spawnEnemies(3);
+		map.spawnEnemies(1);
 		double drawInterval = 1000000000/FPS; 
 		double nextDrawTime = System.nanoTime() + drawInterval;
 		// this is te game loop
@@ -79,9 +80,25 @@ public class GamePanel extends JPanel implements Runnable{
 	}
 	public void update() {
 		player.update(); // updates the player state as this is the only thing we have right now, see player class for more
-		for(EnemyAI enemy : map.enemies){
-			enemy.enemyMovement(player);
-		}
+		List<EnemyAI> enemiesToRemove = new ArrayList<>();
+
+    // First loop to check and mark dead enemies
+    for(EnemyAI enemy : map.enemies) {
+        if(enemy.thisEnemy.isDead) {
+            enemiesToRemove.add(enemy); // Add the dead enemy to the removal list
+        }
+    }
+
+    // Now remove enemies outside of the iteration loop
+    for (EnemyAI enemy : enemiesToRemove) {
+        map.removeEnemy(enemy); // Remove the enemy from the map
+    }
+
+    // Second loop to update the remaining enemies
+    for(EnemyAI enemy : map.enemies) {
+        enemy.enemyMovement(player); // Move the remaining enemies
+    }
+		
 	}
 	
 	
