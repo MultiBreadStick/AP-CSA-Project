@@ -14,6 +14,7 @@ public class EnemyAI extends Entity {
     GamePanel gp;
     int frameCounter;
     private int spriteCounter3 = 0;
+	public Enemy thisEnemy = new Enemy(this.enemy);
 
     
 
@@ -29,6 +30,7 @@ public class EnemyAI extends Entity {
     public void setDefualtValues() {
         
     }
+	
 
     public void enemyMovement(Player player) {
         frameCounter++;
@@ -58,6 +60,9 @@ public class EnemyAI extends Entity {
 		} else if (playerChangeY < 0) {
 			direction = "down";
 		}
+		if(x == player.x && y == player.y){
+			thisEnemy.isDead = true;
+		}
 
 		spriteCounter++;
 			if(spriteCounter > 12) {
@@ -72,6 +77,7 @@ public class EnemyAI extends Entity {
 			if(spriteCounter3 > 48) {
 				spriteCounter3 = 0;
 			}
+			
     }
 
     public void getEnemyImage() {
