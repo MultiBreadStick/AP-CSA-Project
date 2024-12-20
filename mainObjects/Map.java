@@ -40,7 +40,7 @@ public class Map {
                 if (roomGen == 9) {
                     map[i][j] = new Room(stageLevel, false, "treasure", 0);
                 } else {
-                    map[i][j] = new Room(stageLevel, false, "Crab", (int)(Math.random() * 3 + 1));
+                    map[i][j] = new Room(stageLevel, false, "Crab", (int)(Math.random() * (Constants.CRAB_MAX - Constants.CRAB_MIN + 1) + Constants.CRAB_MIN));
                 }
             }
         }
@@ -53,50 +53,68 @@ public class Map {
             EnemyAI newEnemy = new EnemyAI(random.nextInt(1670 - 60 + 1) + 60, random.nextInt(760 - (-10) + 1) - 10, Constants.crab, gp);
             enemies.add(newEnemy);
         }
-        System.out.println(enemies);
+    }
+    //delete ememies
+    public void removeEnemy(EnemyAI enemy){
+        enemies.remove(enemy);
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                if (map[i][j].getInRoom()) {
+                    map[i][j].setNumEnemies(map[i][j].getNumEnemies() - 1);
+                    return;
+                }
+            }
+        }
     }
 
     //move room
     public void nextRoomRight() {
+        enemies.removeAll(enemies);
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 if (map[i][j].getInRoom() && j != 4) {
                     map[i][j + 1].setInRoom(true);
                     map[i][j].setInRoom(false);
-                    //player.x = 740;
+                    spawnEnemies(map[i][j].getNumEnemies());
                     return;
                 }
             }
         }
     }
     public void nextRoomLeft() {
+        enemies.removeAll(enemies);
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 if (map[i][j].getInRoom() && j != 0) {
                     map[i][j - 1].setInRoom(true);
                     map[i][j].setInRoom(false);
+                    spawnEnemies((int)(Math.random() * 2 + Constants.CRAB_MIN));
                     return;
                 }
             }
         }
     }
     public void nextRoomUp() {
+        enemies.removeAll(enemies);
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 if (map[i][j].getInRoom() && i != 4) {
                     map[i + 1][j].setInRoom(true);
                     map[i][j].setInRoom(false);
+                    spawnEnemies((int)(Math.random() * 2 + Constants.CRAB_MIN));
                     return;
                 }
             }
         }
     }
     public void nextRoomDown() {
+        enemies.removeAll(enemies);
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 if (map[i][j].getInRoom() && i != 0) {
                     map[i - 1][j].setInRoom(true);
                     map[i][j].setInRoom(false);
+                    spawnEnemies((int)(Math.random() * 2 + Constants.CRAB_MIN));
                     return;
                 }
             }
