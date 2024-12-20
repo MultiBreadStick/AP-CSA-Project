@@ -8,7 +8,7 @@ public class Enemy {
     private int speed;
     private double attackMultiplier;
     private String name;
-    private boolean isDead;
+    public boolean isDead;
     private boolean isRanged;
     private Attack enemyAttack;
     
@@ -22,7 +22,16 @@ public class Enemy {
         this.isRanged = isRanged;
         this.enemyAttack = enemyAttack;
     }
-    
+    public Enemy(Enemy enemy) {
+        this.health = enemy.health;
+        this.defense = enemy.defense;
+        this.speed = enemy.speed;
+        this.attackMultiplier = enemy.attackMultiplier;
+        this.name = enemy.name;
+        isDead = false;
+        this.isRanged = enemy.isRanged;
+        this.enemyAttack = enemy.enemyAttack;
+    }
     //Get, set health
     public int getHealth () {
         return health;
