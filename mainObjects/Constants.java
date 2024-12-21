@@ -35,11 +35,6 @@ public class Constants {
     public static final int BIG_ROCK_MIN = 1;
     public static final int BIG_ROCK_MAX = 2;
 
-    /**
-     * The stat field represents a statistic value used in the game.
-     */
-    private int stat;
-
     //Sword
     public static final Weapon sword = new Weapon(1.5, 1.5, "Sword", false);
 

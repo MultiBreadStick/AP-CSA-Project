@@ -7,6 +7,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import main.GamePanel;
 import mainObjects.Enemy;
+import mainObjects.Constants;
 
 
 public class EnemyAI extends Entity {
@@ -14,7 +15,7 @@ public class EnemyAI extends Entity {
     GamePanel gp;
     int frameCounter;
     private int spriteCounter3 = 0;
-	public Enemy thisEnemy = new Enemy(this.enemy);
+	public Enemy thisEnemy = new Enemy(Constants.crab);
 
     
 

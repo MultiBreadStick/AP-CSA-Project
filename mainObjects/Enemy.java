@@ -22,16 +22,17 @@ public class Enemy {
         this.isRanged = isRanged;
         this.enemyAttack = enemyAttack;
     }
-    public Enemy(Enemy enemy) {
-        this.health = enemy.health;
-        this.defense = enemy.defense;
-        this.speed = enemy.speed;
-        this.attackMultiplier = enemy.attackMultiplier;
-        this.name = enemy.name;
+    public Enemy(Enemy enemyE) {
+        this.health = enemyE.getHealth();
+        this.defense = enemyE.getDefense();
+        this.speed = enemyE.getSpeed();
+        this.attackMultiplier = enemyE.getAttackMultiplier();
+        this.name = enemyE.getName();
         isDead = false;
-        this.isRanged = enemy.isRanged;
-        this.enemyAttack = enemy.enemyAttack;
+        this.isRanged = enemyE.getIsRanged();
+        this.enemyAttack = enemyE.getAttack();
     }
+
     //Get, set health
     public int getHealth () {
         return health;
@@ -125,12 +126,17 @@ public class Enemy {
     }
 
     //get, set isRanged
-    public boolean isRanged() {
+    public boolean getIsRanged() {
         return isRanged;
     }
 
+    public Attack getAttack() {
+        return enemyAttack;
+    }
+
     //get what enemy gets placed in what rooms
-    public int randomEnemy() {
-        return (int)(Math.random() * 6);
+    public String randomEnemy() {
+        int i = (int)(Math.random() * 6);
+        return "";
     }
 }
