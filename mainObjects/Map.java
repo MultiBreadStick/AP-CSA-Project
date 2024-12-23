@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Random;
 import javax.imageio.ImageIO;
 import main.GamePanel;
+import Entity.blackFade;
 
 /**
  * The Map class represents the game map consisting of rooms and their images.
@@ -69,6 +70,7 @@ public class Map {
 
     //move room
     public void nextRoomRight() {
+        gp.BlackFade.visible = true;
         enemies.removeAll(enemies);
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
@@ -82,6 +84,7 @@ public class Map {
         }
     }
     public void nextRoomLeft() {
+        gp.BlackFade.visible = true;
         enemies.removeAll(enemies);
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
@@ -95,6 +98,7 @@ public class Map {
         }
     }
     public void nextRoomUp() {
+        gp.BlackFade.visible = true;
         enemies.removeAll(enemies);
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
@@ -108,6 +112,7 @@ public class Map {
         }
     }
     public void nextRoomDown() {
+        gp.BlackFade.visible = true;
         enemies.removeAll(enemies);
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {

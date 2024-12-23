@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
 import mainObjects.Map;
+import Entity.blackFade;
 
 public class GamePanel extends JPanel implements Runnable{
 	
@@ -28,6 +29,7 @@ public class GamePanel extends JPanel implements Runnable{
 	Thread gameThread;
 	public Map map = new Map(1, this);
 	Player player = new Player(this, keyH);
+	public blackFade BlackFade = new blackFade();
 
 	
 	//window constructor based off our variables
@@ -80,6 +82,7 @@ public class GamePanel extends JPanel implements Runnable{
 	}
 	public void update() {
 		player.update(); // updates the player state as this is the only thing we have right now, see player class for more
+		BlackFade.update();
 		List<EnemyAI> enemiesToRemove = new ArrayList<>();
 
     // First loop to check and mark dead enemies
@@ -107,6 +110,7 @@ public class GamePanel extends JPanel implements Runnable{
 		Graphics2D g2 = (Graphics2D)g; // casts to Graphics2D
 		map.draw(g2);
 		player.draw(g2); // draws the player
+		BlackFade.draw(g2);
 		g2.dispose(); // clears the graphics2D resources
 		// see the player class for more
 	}
