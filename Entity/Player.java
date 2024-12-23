@@ -148,7 +148,7 @@ public class Player extends Entity{
 
 			
 			spriteCounter++;
-			if(spriteCounter > 12) {
+			if(spriteCounter > 16) {
 				sounds sound = new sounds();
 				sound.setSound(spriteCounter%2);
 				sound.play();
@@ -160,7 +160,7 @@ public class Player extends Entity{
 				spriteCounter = 0;
 			}
 			spriteCounter3++;
-			if(spriteCounter3 > 48) {
+			if(spriteCounter3 > 64) {
 				spriteCounter3 = 0;
 			}
 		}else{
@@ -197,13 +197,13 @@ public class Player extends Entity{
 			break;
 		case "left":
 			if(keyPressed){
-				if(spriteCounter3<=12){
+				if(spriteCounter3<=16){
 				image = left2;
-				}if(spriteCounter3>12&&spriteCounter3<=24) {
+				}if(spriteCounter3>16&&spriteCounter3<=32) {
 				image = left1;
-				}if(spriteCounter3>24&&spriteCounter3<=36) {
+				}if(spriteCounter3>32&&spriteCounter3<=48) {
 				image = left3;
-				}if(spriteCounter3>36&&spriteCounter3<=48) {
+				}if(spriteCounter3>48&&spriteCounter3<=64) {
 				image = left1;
 			}
 			}else{
@@ -212,13 +212,13 @@ public class Player extends Entity{
 			break;
 		case "right":
 			if(keyPressed){
-				if(spriteCounter3<=12){
+				if(spriteCounter3<=16){
 				image = right2;
-				}if(spriteCounter3>12&&spriteCounter3<=24) {
+				}if(spriteCounter3>16&&spriteCounter3<=32) {
 				image = right1;
-				}if(spriteCounter3>24&&spriteCounter3<=36) {
+				}if(spriteCounter3>32&&spriteCounter3<=48) {
 				image = right3;
-				}if(spriteCounter3>36&&spriteCounter3<=48) {
+				}if(spriteCounter3>48&&spriteCounter3<=64) {
 				image = right1;
 			}
 			}else{
