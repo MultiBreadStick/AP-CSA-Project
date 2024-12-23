@@ -30,6 +30,7 @@ public class GamePanel extends JPanel implements Runnable{
 	public Map map = new Map(1, this);
 	Player player = new Player(this, keyH);
 	public blackFade BlackFade = new blackFade();
+	sounds sound = new sounds();
 
 	
 	//window constructor based off our variables
@@ -52,6 +53,9 @@ public class GamePanel extends JPanel implements Runnable{
 	@Override
 	public void run() {
 		map.spawnEnemies(1);
+		sound.setSound(4);
+		sound.play();
+		sound.loop();
 		double drawInterval = 1000000000/FPS; 
 		double nextDrawTime = System.nanoTime() + drawInterval;
 		// this is te game loop

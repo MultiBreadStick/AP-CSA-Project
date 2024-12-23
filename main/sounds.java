@@ -14,6 +14,8 @@ public class sounds {
         soundURL[0] = getClass().getResource("/soundFiles/playerWalk.wav");
         soundURL[1] = getClass().getResource("/soundFiles/playerWalk2.wav");
         soundURL[2] = getClass().getResource("/soundFiles/playerWalk3.wav");
+        soundURL[3] = getClass().getResource("/soundFiles/Metal Hit.wav");
+        soundURL[4] = getClass().getResource("/soundFiles/peacefulBackgroundMusic.wav");
     }
 
     public void setSound(int i){
@@ -30,5 +32,9 @@ public class sounds {
     }
     public void stop(){
         clip.stop();
+    }
+
+    public void loop(){
+        clip.loop(clip.LOOP_CONTINUOUSLY);
     }
 }
