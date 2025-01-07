@@ -2,6 +2,8 @@ package main;
 
 import Entity.EnemyAI;
 import Entity.Player;
+import Entity.Speaker;
+import Entity.blackFade;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -10,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
 import mainObjects.Map;
-import Entity.blackFade;
 
 public class GamePanel extends JPanel implements Runnable{
 	
@@ -29,6 +30,7 @@ public class GamePanel extends JPanel implements Runnable{
 	Thread gameThread;
 	public Map map = new Map(1, this);
 	Player player = new Player(this, keyH);
+	Speaker speaker = new Speaker(this);
 	public blackFade BlackFade = new blackFade();
 	sounds sound = new sounds();
 
@@ -85,6 +87,7 @@ public class GamePanel extends JPanel implements Runnable{
 		}
 	}
 	public void update() {
+		speaker.update();
 		player.update(); // updates the player state as this is the only thing we have right now, see player class for more
 		BlackFade.update();
 		List<EnemyAI> enemiesToRemove = new ArrayList<>();
@@ -114,6 +117,7 @@ public class GamePanel extends JPanel implements Runnable{
 		Graphics2D g2 = (Graphics2D)g; // casts to Graphics2D
 		map.draw(g2);
 		player.draw(g2); // draws the player
+		speaker.draw(g2);
 		BlackFade.draw(g2);
 		g2.dispose(); // clears the graphics2D resources
 		// see the player class for more
