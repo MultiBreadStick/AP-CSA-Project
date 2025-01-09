@@ -15,7 +15,7 @@ public class Speaker{
 	KeyHandler keyH;
 	public Map map;
 	public String talker;
-    BufferedImage kenCurie;
+    BufferedImage kenCurie, crab;
 	
 	public Speaker(GamePanel gp) {
 		this.gp = gp;
@@ -26,13 +26,14 @@ public class Speaker{
 	public void getSpeakerImage() {
 		try {
 			kenCurie = ImageIO.read(new File("Sprites/kenCurie.png"));
+			crab = ImageIO.read(new File("Entity/playerSprites/sprite.png"));
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	public void update() {
-		
+		//talker = "kenCurie";
 	}
 
 	public void draw(Graphics2D g2) {
@@ -41,9 +42,13 @@ public class Speaker{
 		case "kenCurie":
 			image = kenCurie;
 			break;
+		case "crab":
+			image = crab;
+			break;
         }
 		g2.drawImage(image, 190, 500, 8*gp.tileSize, 12*gp.tileSize, null);
-
-	}
+    }
+		
 
 }
+
