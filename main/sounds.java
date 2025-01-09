@@ -16,6 +16,13 @@ public class sounds {
         soundURL[2] = getClass().getResource("/soundFiles/playerWalk3.wav");
         soundURL[3] = getClass().getResource("/soundFiles/Metal Hit.wav");
         soundURL[4] = getClass().getResource("/soundFiles/peacefulBackgroundMusic.wav");
+        soundURL[5] = getClass().getResource("/soundFiles/horrorsouds/Gasp.wav");
+        soundURL[6] = getClass().getResource("/soundFiles/horrorsouds/Footsteps_walking.wav");
+        soundURL[7] = getClass().getResource("/soundFiles/horrorsouds/Footsteps_running.wav");
+        soundURL[8] = getClass().getResource("/soundFiles/horrorsouds/Breathing_fast.wav");
+        soundURL[9] = getClass().getResource("/soundFiles/horrorsouds/Breathing_slow.wav");
+        soundURL[10] = getClass().getResource("/soundFiles/horrorsouds/Gasp_3.wav");
+        
     }
 
     public void setSound(int i){
@@ -36,5 +43,9 @@ public class sounds {
 
     public void loop(){
         clip.loop(clip.LOOP_CONTINUOUSLY);
+    }
+
+    public boolean isPlaying(){
+        return clip != null && clip.isRunning();
     }
 }
