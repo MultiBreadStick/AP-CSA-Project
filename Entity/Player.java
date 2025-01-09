@@ -58,6 +58,8 @@ public class Player extends Entity{
 	// checks which keys are being pressed if any based off the key handler class and sets the sprite's corresponding direction
 	// then cycles through each sprite( 2 for each direction) every 12 frames to create the running animaiton
 	public void update() {
+		sounds sound = new sounds();
+		sounds breathSound = new sounds();
 		if(keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true) {
 			keyPressed = true;
 			if((keyH.upPressed == true && keyH.downPressed == true) || (keyH.rightPressed == true && keyH.leftPressed == true)) {
@@ -145,11 +147,16 @@ public class Player extends Entity{
 			} else if (y <= 180-192) {//wall size minus player
 				y = 180-192;
 			}
+			
+			if(!breathSound.isPlaying()){
+				breathSound.setSound(keyPressed ? 8 : 9);
+				breathSound.play();
+			}
+			
 
 			
 			spriteCounter++;
 			if(spriteCounter > 16) {
-				sounds sound = new sounds();
 				sound.setSound(spriteCounter%2);
 				sound.play();
 				if(spriteNum == 1) {
