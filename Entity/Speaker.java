@@ -32,7 +32,7 @@ public class Speaker{
 	}
 
 	public void update() {
-		talker = "kenCurie";
+		
 	}
 
 	public void draw(Graphics2D g2) {
