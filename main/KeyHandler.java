@@ -42,7 +42,7 @@ public class KeyHandler implements KeyListener{
 	}
 
     //checks which WASD keys are released
-    //we might not need this but it was easy to copy and paste
+	// need to set pressed to false
 	@Override
 	public void keyReleased(KeyEvent e) {
 		int code = e.getKeyCode();
@@ -61,6 +61,9 @@ public class KeyHandler implements KeyListener{
 		if(code == KeyEvent.VK_D) {
 			rightPressed = false;
 
+		}
+		if(code == KeyEvent.VK_ENTER){
+			enterPressed = false;
 		}
 	}
 	
