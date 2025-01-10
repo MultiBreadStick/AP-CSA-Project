@@ -7,10 +7,10 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import main.GamePanel;
 import main.KeyHandler;
+import main.sounds;
 import mainObjects.Constants;
 import mainObjects.Map;
 import mainObjects.PlayerStats;
-import main.sounds;
 
 public class Player extends Entity{
 	
@@ -148,10 +148,12 @@ public class Player extends Entity{
 				y = 180-192;
 			}
 			
+			breathSound.setSound(keyPressed ? 8 : 9);
 			if(!breathSound.isPlaying()){
-				breathSound.setSound(keyPressed ? 8 : 9);
 				breathSound.play();
 			}
+
+			System.out.println(breathSound.isPlaying());
 			
 
 			
