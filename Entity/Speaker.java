@@ -18,6 +18,7 @@ public class Speaker{
     BufferedImage kenCurie, crab;
 	
 	public Speaker(GamePanel gp) {
+		talker = "";
 		this.gp = gp;
 		this.map = gp.map;
 		getSpeakerImage();
