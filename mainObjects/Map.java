@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Random;
 import javax.imageio.ImageIO;
 import main.GamePanel;
-import Entity.blackFade;
 
 /**
  * The Map class represents the game map consisting of rooms and their images.
@@ -35,13 +34,14 @@ public class Map {
         this.gp = gp;
         image = botLeft;
         map = new Room[5][5];
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map.length; j++) {
                 int roomGen = (int)(Math.random() * 10);
                 if (roomGen == 9) {
                     map[i][j] = new Room(stageLevel, false, "treasure", 0);
                 } else {
-                    map[i][j] = new Room(stageLevel, false, "Crab", (int)(Math.random() * (Constants.CRAB_MAX - Constants.CRAB_MIN + 1) + Constants.CRAB_MIN));
+                    int numEnemies = (int)(Math.random() * (Constants.CRAB_MAX - Constants.CRAB_MIN + 1) + Constants.CRAB_MIN);
+                    map[i][j] = new Room(stageLevel, false, "Crab", numEnemies);
                 }
             }
         }

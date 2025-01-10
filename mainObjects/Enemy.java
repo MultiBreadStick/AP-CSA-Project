@@ -11,6 +11,8 @@ public class Enemy {
     public boolean isDead;
     private boolean isRanged;
     private Attack enemyAttack;
+    private int width;
+    private int length;
     
     public Enemy(int health, double defense, int speed, double attackMultiplier, String name, boolean isRanged, Attack enemyAttack) {
         this.health = health;
@@ -21,6 +23,8 @@ public class Enemy {
         isDead = false;
         this.isRanged = isRanged;
         this.enemyAttack = enemyAttack;
+        length = 10;
+        width = 10;
     }
     public Enemy(Enemy enemyE) {
         this.health = enemyE.getHealth();
@@ -31,6 +35,8 @@ public class Enemy {
         isDead = false;
         this.isRanged = enemyE.getIsRanged();
         this.enemyAttack = enemyE.getAttack();
+        length = 10;
+        width = 10;
     }
 
     //Get, set health

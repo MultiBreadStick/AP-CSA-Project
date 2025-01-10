@@ -55,9 +55,9 @@ public class GamePanel extends JPanel implements Runnable{
 	@Override
 	public void run() {
 		map.spawnEnemies(1);
-		sound.setSound(4);
-		sound.play();
-		sound.loop();
+		//sound.setSound(4);
+		//sound.play();
+		//sound.loop();
 		double drawInterval = 1000000000/FPS; 
 		double nextDrawTime = System.nanoTime() + drawInterval;
 		// this is te game loop

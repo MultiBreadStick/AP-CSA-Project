@@ -4,15 +4,17 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 import javax.imageio.ImageIO;
 import main.GamePanel;
-import mainObjects.Enemy;
 import mainObjects.Constants;
+import mainObjects.Enemy;
 
 
 public class EnemyAI extends Entity {
     public Enemy enemy;
     GamePanel gp;
+	Map map;
     int frameCounter;
     private int spriteCounter3 = 0;
 	public Enemy thisEnemy = new Enemy(Constants.crab);
@@ -63,6 +65,7 @@ public class EnemyAI extends Entity {
 		}
 		if(x == player.x && y == player.y){
 			thisEnemy.isDead = true;
+			//map.removeEnemy(thisEnemy);
 		}
 
 		spriteCounter++;

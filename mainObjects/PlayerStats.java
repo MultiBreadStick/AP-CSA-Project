@@ -175,9 +175,4 @@ public class PlayerStats {
             hand1 = item;
         }
     }
-
-    //returns all of the player's information
-    public String toString() {
-        return "Name: " + name + "\n" + "Level: " + level + "\n" + "Experience: " + experience + "\n" + "Health: " + currentHealth + "/" + maxHealth + "\n" + "Weapon: " + hand1.toString() + " " + hand2.toString();
-    }
 }
