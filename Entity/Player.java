@@ -20,6 +20,8 @@ public class Player extends Entity{
 	public PlayerStats player;
 	private boolean keyPressed;
 	private int spriteCounter3 = 0;
+	sounds sound = new sounds();
+	sounds breathSound = new sounds();
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
 		this.gp = gp;
@@ -58,8 +60,6 @@ public class Player extends Entity{
 	// checks which keys are being pressed if any based off the key handler class and sets the sprite's corresponding direction
 	// then cycles through each sprite( 2 for each direction) every 12 frames to create the running animaiton
 	public void update() {
-		sounds sound = new sounds();
-		sounds breathSound = new sounds();
 		if(keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true) {
 			keyPressed = true;
 			if((keyH.upPressed == true && keyH.downPressed == true) || (keyH.rightPressed == true && keyH.leftPressed == true)) {
@@ -148,13 +148,6 @@ public class Player extends Entity{
 				y = 180-192;
 			}
 			
-			breathSound.setSound(keyPressed ? 8 : 9);
-			if(!breathSound.isPlaying()){
-				breathSound.play();
-			}
-
-			System.out.println(breathSound.isPlaying());
-			
 
 			
 			spriteCounter++;
@@ -175,7 +168,12 @@ public class Player extends Entity{
 		}else{
 			keyPressed = false;
 		}
-		
+		if(!breathSound.isPlaying()){
+			breathSound.setSound(keyPressed ? 8 : 9);
+			breathSound.play();
+		}
+
+		System.out.println(breathSound.isPlaying());
 	}
 	// this sets which image the player sprite is supposed to be using a switch statment based off our update() method
 	// then it actually draws the player onto the screen in whatever location its supposed to be in
