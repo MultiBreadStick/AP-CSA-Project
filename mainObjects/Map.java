@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Random;
 import javax.imageio.ImageIO;
 import main.GamePanel;
+//import mainObjects.Object;
 
 /**
  * The Map class represents the game map consisting of rooms and their images.
@@ -17,6 +18,7 @@ import main.GamePanel;
 public class Map {
     // Instance variables
     public Room[][] map;
+    //public Object[][] objArray;
     public List<EnemyAI> enemies = new ArrayList<>();
     private int stageLevel;
     public BufferedImage botLeft, botRight, topLeft, topRight, bot, top, right, left, middle, image;
@@ -162,14 +164,14 @@ public class Map {
      */
     private void getMapImage() {
         try {
-            botLeft = ImageIO.read(new File("Sprites/GrassRoom/25.png"));
-            botRight = ImageIO.read(new File("Sprites/GrassRoom/26.png"));
-            topLeft = ImageIO.read(new File("Sprites/GrassRoom/23.png"));
-            topRight = ImageIO.read(new File("Sprites/GrassRoom/22.png"));
-            left = ImageIO.read(new File("Sprites/GrassRoom/34.png"));
-            right = ImageIO.read(new File("Sprites/GrassRoom/33.png"));
-            top = ImageIO.read(new File("Sprites/GrassRoom/32.png"));
-            bot = ImageIO.read(new File("Sprites/GrassRoom/31.png"));
+            botLeft = ImageIO.read(new File("Sprites/GrassRoom/41.png"));
+            botRight = ImageIO.read(new File("Sprites/GrassRoom/41.png"));
+            topLeft = ImageIO.read(new File("Sprites/GrassRoom/41.png"));
+            topRight = ImageIO.read(new File("Sprites/GrassRoom/41.png"));
+            left = ImageIO.read(new File("Sprites/GrassRoom/41.png"));
+            right = ImageIO.read(new File("Sprites/GrassRoom/41.png"));
+            top = ImageIO.read(new File("Sprites/GrassRoom/41.png"));
+            bot = ImageIO.read(new File("Sprites/GrassRoom/41.png"));
             middle = ImageIO.read(new File("Sprites/GrassRoom/41.png"));
         } catch(IOException e) {
             e.printStackTrace();
@@ -184,4 +186,8 @@ public class Map {
             enemy.draw(g2);
         }
     } 
+
+    //public void update() {
+        
+    //}
 }
