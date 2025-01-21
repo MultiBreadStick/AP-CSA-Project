@@ -1,6 +1,5 @@
 package mainObjects;
 
-
 public class Enemy {
 
     private int health;
@@ -156,19 +155,13 @@ public class Enemy {
     //get what enemy gets placed in what rooms
     public Enemy randomEnemy() {
         int i = (int)(Math.random() * 5);
-        switch (i) {
-            case 0:
-                return Constants.crab;
-            case 1:
-                return Constants.crab;
-            case 2:
-                return Constants.crab;
-            case 3:
-                return Constants.crab;
-            case 4:
-                return Constants.crab;
-            default:
-                return null;
-        }
+        return switch (i) {
+            case 0 -> Constants.crab;
+            case 1 -> Constants.crab;
+            case 2 -> Constants.crab;
+            case 3 -> Constants.crab;
+            case 4 -> Constants.crab;
+            default -> null;
+        };
     }
 }

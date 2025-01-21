@@ -6,7 +6,7 @@ public class Constants {
     public static final int MAX_Y = 9*120;
 
     //Crab
-    public static final Attack CRAB_ATTACK = new Attack(20, "Crab", 30, 30);
+    public static final Attack CRAB_ATTACK = new Attack(20, "Crab", new int[]{30, 30});
     public static final Enemy crab = new Enemy(100, 0.75, 3, 1.25, "Crab", false, CRAB_ATTACK);
     public static final int CRAB_MIN = 2;
     public static final int CRAB_MAX = 3;

@@ -4,14 +4,12 @@ package mainObjects;
 public class Attack {
     private int damage;
     private String name;
-    private int width;
-    private int length;
+    private int[] hitBox;
 
-    public Attack(int damage, String name, int width, int length) {
+    public Attack(int damage, String name, int[] hitBox) {
         this.damage = damage;
         this.name = name;
-        this.width = width;
-        this.length = length;
+        this.hitBox = hitBox;
     }
 
     public int getEnemyAttackDamage(Enemy enemy) {
@@ -41,17 +39,10 @@ public class Attack {
         this.name = name;
     }
 
-    public int getWidth() {
-        return width;
+    public int[] getWidth() {
+        return hitBox;
     }
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public int getLength() {
-        return length;
-    }
-    public void setLength(int length) {
-        this.length = length;
+    public void setWidth(int[] hitBox) {
+        this.hitBox = hitBox;
     }
 } 

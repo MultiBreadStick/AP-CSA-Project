@@ -42,28 +42,18 @@ public class Map {
 
     //Bare bones so we can import new images easily and set up better stuff
     public BufferedImage getRoomImage() {
-        switch (stageLevel) {
-            case 0:
-                return botLeft;
-            case 1:
-                return bot;
-            case 2:
-                return botRight;
-            case 3:
-                return left;
-            case 4:
-                return middle;
-            case 5:
-                return right;
-            case 6:
-                return topLeft;
-            case 7:
-                return top;
-            case 8:
-                return topRight;
-            default:
-                return null;
-        }
+        return switch (stageLevel) {
+            case 0 -> botLeft;
+            case 1 -> bot;
+            case 2 -> botRight;
+            case 3 -> left;
+            case 4 -> middle;
+            case 5 -> right;
+            case 6 -> topLeft;
+            case 7 -> top;
+            case 8 -> topRight;
+            default -> null;
+        };
     }
 
     
