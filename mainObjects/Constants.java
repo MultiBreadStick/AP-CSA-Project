@@ -1,10 +1,6 @@
 package mainObjects;
 
 public class Constants {
-    
-    //Room array
-    public static final int ROOM_ROW_MAX = 5;
-    public static final int ROOM_COL_MAX = 5;
 
     public static final int MAX_X = 16*120;
     public static final int MAX_Y = 9*120;

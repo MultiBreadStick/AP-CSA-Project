@@ -12,9 +12,7 @@ import javax.imageio.ImageIO;
 import main.GamePanel;
 //import mainObjects.Object;
 
-/**
- * The Map class represents the game map consisting of rooms and their images.
- */
+
 public class Map {
     //public Object[][] objArray;
     public List<EnemyAI> enemies = new ArrayList<>();
@@ -22,17 +20,12 @@ public class Map {
     public BufferedImage botLeft, botRight, topLeft, topRight, bot, top, right, left, middle, image;
     GamePanel gp;
 
-    /**
-     * Constructs a Map with the specified level and game panel.
-     *
-     * @param level the level of the map
-     * @param gp the game panel associated with the map
-     */
+    
     public Map(int level, GamePanel gp) {
         getMapImage();
         this.stageLevel = level;
+        //switch case based on stage level goes here in the future
         this.gp = gp;
-        image = botLeft;
     }
     //spawn enemies
     public void spawnEnemies(int enemyNum){
@@ -47,14 +40,33 @@ public class Map {
         enemies.remove(enemy);
     }
 
-
+    //Bare bones so we can import new images easily and set up better stuff
     public BufferedImage getRoomImage() {
-        return image;
+        switch (stageLevel) {
+            case 0:
+                return botLeft;
+            case 1:
+                return bot;
+            case 2:
+                return botRight;
+            case 3:
+                return left;
+            case 4:
+                return middle;
+            case 5:
+                return right;
+            case 6:
+                return topLeft;
+            case 7:
+                return top;
+            case 8:
+                return topRight;
+            default:
+                return null;
+        }
     }
 
-    /**
-     * Loads the map images.
-     */
+    
     private void getMapImage() {
         try {
             botLeft = ImageIO.read(new File("Sprites/GrassRoom/41.png"));
