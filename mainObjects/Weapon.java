@@ -5,6 +5,7 @@ public class Weapon {
     private double weaponSpeed;
     private String name;
     private boolean isRanged;
+    private int[] attackArea;
 
     public Weapon() {
         multiplier = 1.0;
@@ -18,7 +19,15 @@ public class Weapon {
         this.weaponSpeed = weaponSpeed;
         this.name = name;
         this.isRanged = isRanged;
+        attackArea = new int[]{10, 10};
     }
+    public Weapon(double multiplier, double weaponSpeed, String name, boolean isRanged, int[] attackArea) {
+        this.multiplier = multiplier;
+        this.weaponSpeed = weaponSpeed;
+        this.name = name;
+        this.isRanged = isRanged;
+        this.attackArea = attackArea;
+    } 
 
     // set get methods
     public String getName() {
@@ -35,47 +44,34 @@ public class Weapon {
         this.multiplier = multiplier;
     }
 
-    /**
-     * Gets the speed of the weapon.
-     *
-     * @return the speed of the weapon
-     */
+    
     public double getWeaponSpeed() {
         return weaponSpeed;
     }
 
-    /**
-     * Sets the speed of the weapon.
-     *
-     * @param weaponSpeed the new speed of the weapon
-     */
+    
     public void setWeaponSpeed(double weaponSpeed) {
         this.weaponSpeed = weaponSpeed;
     }
 
-    /**
-     * Checks if the weapon is ranged.
-     *
-     * @return true if the weapon is ranged, false otherwise
-     */
+    
     public boolean getIsRanged() {
         return isRanged;
     }
 
-    /**
-     * Sets whether the weapon is ranged.
-     *
-     * @param isRanged true if the weapon is ranged, false otherwise
-     */
+    
     public void setIsRanged(boolean isRanged) {
         this.isRanged = isRanged;
     }
 
-    /**
-     * Returns a string representation of the weapon's information.
-     *
-     * @return a string containing the weapon's name, damage multiplier, and speed multiplier
-     */
+    public int[] getAttackArea() {
+        return attackArea;
+    }
+    
+    public void setAttackArea(int[] attackArea) {
+        this.attackArea = attackArea;
+    }
+    
     @Override
     public String toString() {
         return "This " + name + " has a damage multiplier of " + multiplier + " and a speed multiplier of " + weaponSpeed + " .";

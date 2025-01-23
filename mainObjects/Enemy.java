@@ -1,6 +1,5 @@
 package mainObjects;
 
-
 public class Enemy {
 
     private int health;
@@ -11,8 +10,7 @@ public class Enemy {
     public boolean isDead;
     private boolean isRanged;
     private Attack enemyAttack;
-    private int width;
-    private int length;
+    private int[] hitBox = {0, 0};
     
     public Enemy(int health, double defense, int speed, double attackMultiplier, String name, boolean isRanged, Attack enemyAttack) {
         this.health = health;
@@ -23,8 +21,8 @@ public class Enemy {
         isDead = false;
         this.isRanged = isRanged;
         this.enemyAttack = enemyAttack;
-        length = 10;
-        width = 10;
+        hitBox = new int[]
+            {10, 10};
     }
     public Enemy(Enemy enemyE) {
         this.health = enemyE.getHealth();
@@ -35,8 +33,18 @@ public class Enemy {
         isDead = false;
         this.isRanged = enemyE.getIsRanged();
         this.enemyAttack = enemyE.getAttack();
-        length = 10;
-        width = 10;
+        this.hitBox = getHitBox();
+    }
+    public Enemy(int health, double defense, int speed, double attackMultiplier, String name, boolean isRanged, Attack enemyAttack, int[] hitBox) {
+        this.health = health;
+        this.defense = defense;
+        this.speed = speed;
+        this.attackMultiplier = attackMultiplier;
+        this.name = name;
+        isDead = false;
+        this.isRanged = isRanged;
+        this.enemyAttack = enemyAttack;
+        this.hitBox = hitBox;
     }
 
     //Get, set health
@@ -140,9 +148,20 @@ public class Enemy {
         return enemyAttack;
     }
 
+    public int[] getHitBox() {
+        return hitBox;
+    }
+
     //get what enemy gets placed in what rooms
-    public String randomEnemy() {
-        int i = (int)(Math.random() * 6);
-        return "";
+    public Enemy randomEnemy() {
+        int i = (int)(Math.random() * 5);
+        return switch (i) {
+            case 0 -> Constants.crab;
+            case 1 -> Constants.crab;
+            case 2 -> Constants.crab;
+            case 3 -> Constants.crab;
+            case 4 -> Constants.crab;
+            default -> null;
+        };
     }
 }

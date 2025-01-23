@@ -12,42 +12,20 @@ import javax.imageio.ImageIO;
 import main.GamePanel;
 //import mainObjects.Object;
 
-/**
- * The Map class represents the game map consisting of rooms and their images.
- */
+
 public class Map {
-    // Instance variables
-    public Room[][] map;
     //public Object[][] objArray;
     public List<EnemyAI> enemies = new ArrayList<>();
     private int stageLevel;
     public BufferedImage botLeft, botRight, topLeft, topRight, bot, top, right, left, middle, image;
     GamePanel gp;
 
-    /**
-     * Constructs a Map with the specified level and game panel.
-     *
-     * @param level the level of the map
-     * @param gp the game panel associated with the map
-     */
+    
     public Map(int level, GamePanel gp) {
         getMapImage();
         this.stageLevel = level;
+        //switch case based on stage level goes here in the future
         this.gp = gp;
-        image = botLeft;
-        map = new Room[5][5];
-        for (int i = 0; i < map.length; i++) {
-            for (int j = 0; j < map.length; j++) {
-                int roomGen = (int)(Math.random() * 10);
-                if (roomGen == 9) {
-                    map[i][j] = new Room(stageLevel, false, "treasure", 0);
-                } else {
-                    int numEnemies = (int)(Math.random() * (Constants.CRAB_MAX - Constants.CRAB_MIN + 1) + Constants.CRAB_MIN);
-                    map[i][j] = new Room(stageLevel, false, "Crab", numEnemies);
-                }
-            }
-        }
-        map[0][0] = new Room(stageLevel, true, "empty", 0);
     }
     //spawn enemies
     public void spawnEnemies(int enemyNum){
@@ -60,108 +38,25 @@ public class Map {
     //delete ememies
     public void removeEnemy(EnemyAI enemy){
         enemies.remove(enemy);
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                if (map[i][j].getInRoom()) {
-                    map[i][j].setNumEnemies(map[i][j].getNumEnemies() - 1);
-                    return;
-                }
-            }
-        }
     }
 
-    //move room
-    public void nextRoomRight() {
-        gp.BlackFade.visible = true;
-        enemies.removeAll(enemies);
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                if (map[i][j].getInRoom() && j != 4) {
-                    map[i][j + 1].setInRoom(true);
-                    map[i][j].setInRoom(false);
-                    spawnEnemies(map[i][j].getNumEnemies());
-                    return;
-                }
-            }
-        }
-    }
-    public void nextRoomLeft() {
-        gp.BlackFade.visible = true;
-        enemies.removeAll(enemies);
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                if (map[i][j].getInRoom() && j != 0) {
-                    map[i][j - 1].setInRoom(true);
-                    map[i][j].setInRoom(false);
-                    spawnEnemies(map[i][j].getNumEnemies());
-                    return;
-                }
-            }
-        }
-    }
-    public void nextRoomUp() {
-        gp.BlackFade.visible = true;
-        enemies.removeAll(enemies);
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                if (map[i][j].getInRoom() && i != 4) {
-                    map[i + 1][j].setInRoom(true);
-                    map[i][j].setInRoom(false);
-                    spawnEnemies(map[i][j].getNumEnemies());
-                    return;
-                }
-            }
-        }
-    }
-    public void nextRoomDown() {
-        gp.BlackFade.visible = true;
-        enemies.removeAll(enemies);
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                if (map[i][j].getInRoom() && i != 0) {
-                    map[i - 1][j].setInRoom(true);
-                    map[i][j].setInRoom(false);
-                    spawnEnemies(map[i][j].getNumEnemies());
-                    return;
-                }
-            }
-        }
-    }
-
-    public boolean mapInRoom(int i, int j) {
-        return map[i][j].getInRoom();
-    }
-
+    //Bare bones so we can import new images easily and set up better stuff
     public BufferedImage getRoomImage() {
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                if (map[i][j].getInRoom()) {
-                    if (j == 0 && i == 0) {
-                        image = botLeft;
-                    } else if (j == 0 && i == 4) {
-                        image = topLeft;
-                    } else if (j == 4 && i == 0) {
-                        image = botRight;
-                    } else if (j == 4 && i == 4) {
-                        image = topRight;
-                    } else if (j == 0) {
-                        image = left;
-                    } else if (j == 4) {
-                        image = right;
-                    } else if (i == 0) {
-                        image = top;
-                    } else if (i == 4) {
-                        image = bot;
-                    } else image = middle;
-                }
-            }
-        }
-        return image;
+        return switch (stageLevel) {
+            case 0 -> botLeft;
+            case 1 -> bot;
+            case 2 -> botRight;
+            case 3 -> left;
+            case 4 -> middle;
+            case 5 -> right;
+            case 6 -> topLeft;
+            case 7 -> top;
+            case 8 -> topRight;
+            default -> null;
+        };
     }
 
-    /**
-     * Loads the map images.
-     */
+    
     private void getMapImage() {
         try {
             botLeft = ImageIO.read(new File("Sprites/GrassRoom/41.png"));
@@ -186,8 +81,4 @@ public class Map {
             enemy.draw(g2);
         }
     } 
-
-    //public void update() {
-        
-    //}
 }
