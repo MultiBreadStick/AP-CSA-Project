@@ -27,9 +27,10 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	//creates the player and key listner
 	KeyHandler keyH = new KeyHandler();
+	MouseHandler mouseH = new MouseHandler();
 	Thread gameThread;
 	public Map map = new Map(1, this);
-	Player player = new Player(this, keyH);
+	Player player = new Player(this, keyH, mouseH);
 	Speaker speaker = new Speaker(this);
 	public blackFade BlackFade = new blackFade();
 	sounds sound = new sounds();
@@ -41,6 +42,7 @@ public class GamePanel extends JPanel implements Runnable{
 		this.setBackground( new Color(1, 1, 1));
 		this.setDoubleBuffered(true);
 		this.addKeyListener(keyH);
+		this.addMouseListener(mouseH);
 		this.setFocusable(true);
 	}
 

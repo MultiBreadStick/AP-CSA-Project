@@ -7,6 +7,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import main.GamePanel;
 import main.KeyHandler;
+import main.MouseHandler;
 import main.sounds;
 import mainObjects.Constants;
 import mainObjects.Map;
@@ -16,16 +17,20 @@ public class Player extends Entity{
 	
 	GamePanel gp;
 	KeyHandler keyH;
+	MouseHandler mouseH;
 	public Map map;
 	public PlayerStats player;
 	private boolean keyPressed;
-	private int spriteCounter3 = 0;
+	private int spriteCounterMovement3 = 0;
+	private int spriteCounterAttack3 = 0;
+	private boolean isAttack;
 	sounds sound = new sounds();
 	sounds breathSound = new sounds();
 	
-	public Player(GamePanel gp, KeyHandler keyH) {
+	public Player(GamePanel gp, KeyHandler keyH, MouseHandler mouseH) {
 		this.gp = gp;
 		this.keyH = keyH;
+		this.mouseH = mouseH;
 		this.map = gp.map;
 		setDefaultValues();
 		getPlayerImage();
@@ -44,15 +49,27 @@ public class Player extends Entity{
 			up1 = ImageIO.read(new File("Sprites/HazmatGuy/21.png"));
 			up2 = ImageIO.read(new File("Sprites/HazmatGuy/22.png"));
 			up3 = ImageIO.read(new File("Sprites/HazmatGuy/23.png"));
+			upAtk1 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/12.png"));
+			upAtk2 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/13.png"));
+			upAtk3 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/14.png"));
 			down1 = ImageIO.read(new File("Sprites/HazmatGuy/11.png"));
 			down2 = ImageIO.read(new File("Sprites/HazmatGuy/12.png"));
 			down3 = ImageIO.read(new File("Sprites/HazmatGuy/13.png"));
+			downAtk1 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/22.png"));
+			downAtk2 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/23.png"));
+			downAtk3 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/24.png"));
 			right1 = ImageIO.read(new File("Sprites/HazmatGuy/31.png"));
 			right2 = ImageIO.read(new File("Sprites/HazmatGuy/32.png"));
 			right3 = ImageIO.read(new File("Sprites/HazmatGuy/33.png"));
+			rightAtk1 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/32.png"));
+			rightAtk2 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/33.png"));
+			rightAtk3 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/34.png"));
 			left1 = ImageIO.read(new File("Sprites/HazmatGuy/41.png"));
 			left2 = ImageIO.read(new File("Sprites/HazmatGuy/42.png"));
 			left3 = ImageIO.read(new File("Sprites/HazmatGuy/43.png"));
+			leftAtk1 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/42.png"));
+			leftAtk2 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/43.png"));
+			leftAtk3 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/44.png"));
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
@@ -60,42 +77,44 @@ public class Player extends Entity{
 	// checks which keys are being pressed if any based off the key handler class and sets the sprite's corresponding direction
 	// then cycles through each sprite( 2 for each direction) every 12 frames to create the running animaiton
 	public void update() {
-		if(keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true) {
+		if(keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed ||
+			mouseH.button1 || mouseH.button2 || mouseH.button3 || mouseH.button4 || mouseH.button5) {
 			keyPressed = true;
-			if((keyH.upPressed == true && keyH.downPressed == true) || (keyH.rightPressed == true && keyH.leftPressed == true)) {
-			} else if(keyH.upPressed == true && keyH.leftPressed == true) {
+			if((keyH.upPressed && keyH.downPressed) || (keyH.rightPressed && keyH.leftPressed)) {
+			} else if(keyH.upPressed && keyH.leftPressed) {
 				direction = "left";
 				y -= (int) Math.round(((double)speed / 1.4142));
 				x -= (int) Math.round(((double)speed / 1.4142));
-			} else if(keyH.upPressed == true && keyH.rightPressed == true) {
+			} else if(keyH.upPressed && keyH.rightPressed) {
 				direction = "right";
 				y -= (int) Math.round(((double)speed / 1.4142));
 				x += (int) Math.round(((double)speed / 1.4142));
-			} else if(keyH.downPressed == true && keyH.leftPressed == true) {
+			} else if(keyH.downPressed && keyH.leftPressed) {
 				direction = "left";
 				y += (int) Math.round(((double)speed / 1.4142));
 				x -= (int) Math.round(((double)speed / 1.4142));
-			}else if(keyH.downPressed == true && keyH.rightPressed == true) {
+			}else if(keyH.downPressed && keyH.rightPressed) {
 				direction = "right";
 				y += (int) Math.round(((double)speed / 1.4142));
 				x += (int) Math.round(((double)speed / 1.4142));
-			}else if(keyH.upPressed == true) {
+			}else if(keyH.upPressed) {
 				direction = "up";
 				y -= speed;
-			}else if (keyH.downPressed == true) {
+			}else if (keyH.downPressed) {
 				direction = "down";
 				y += speed;
-			}else if (keyH.leftPressed == true) {
+			}else if (keyH.leftPressed) {
 				direction = "left";
 				x -= speed;
-			}else if (keyH.rightPressed == true) {
+			}else if (keyH.rightPressed) {
 				direction = "right";
 				x += speed;
 			}
 
-			//Attack
-			if (keyH.attackPressed) {
-				//ben figure this out
+			if (mouseH.button1) {
+				isAttack = true;
+			} else if (mouseH.button4) {
+				System.out.println("yippee");
 			}
 
 			//Boundary wall
@@ -123,12 +142,16 @@ public class Player extends Entity{
 				}
 				spriteCounter = 0;
 			}
-			spriteCounter3++;
-			if(spriteCounter3 > 64) {
-				spriteCounter3 = 0;
+			spriteCounterMovement3++;
+			if(spriteCounterMovement3 > 64) {
+				spriteCounterMovement3 = 0;
+			}
+			if (spriteCounterAttack3 > 48) {
+				spriteCounterAttack3 = 0;
 			}
 		}else{
 			keyPressed = false;
+			isAttack = false;
 		}
 		if(!breathSound.isPlaying()){
 			breathSound.setSound(keyPressed ? 8 : 9);
@@ -166,13 +189,13 @@ public class Player extends Entity{
 			break;
 		case "left":
 			if(keyPressed){
-				if(spriteCounter3<=16){
+				if(spriteCounterMovement3<=16){
 				image = left2;
-				}if(spriteCounter3>16&&spriteCounter3<=32) {
+				}if(spriteCounterMovement3>16&&spriteCounterMovement3<=32) {
 				image = left1;
-				}if(spriteCounter3>32&&spriteCounter3<=48) {
+				}if(spriteCounterMovement3>32&&spriteCounterMovement3<=48) {
 				image = left3;
-				}if(spriteCounter3>48&&spriteCounter3<=64) {
+				}if(spriteCounterMovement3>48&&spriteCounterMovement3<=64) {
 				image = left1;
 			}
 			}else{
@@ -181,17 +204,26 @@ public class Player extends Entity{
 			break;
 		case "right":
 			if(keyPressed){
-				if(spriteCounter3<=16){
+				if(spriteCounterMovement3<=16){
 				image = right2;
-				}if(spriteCounter3>16&&spriteCounter3<=32) {
+				}if(spriteCounterMovement3>16&&spriteCounterMovement3<=32) {
 				image = right1;
-				}if(spriteCounter3>32&&spriteCounter3<=48) {
+				}if(spriteCounterMovement3>32&&spriteCounterMovement3<=48) {
 				image = right3;
-				}if(spriteCounter3>48&&spriteCounter3<=64) {
+				}if(spriteCounterMovement3>48&&spriteCounterMovement3<=64) {
 				image = right1;
 			}
 			}else{
 				image = right1;
+			}
+			if (isAttack) {
+				if (spriteCounterAttack3 <= 16) {
+					image = rightAtk1;
+				} if (spriteCounterAttack3 > 16 && spriteCounterAttack3 <= 32) {
+					image = rightAtk2;
+				} if (spriteCounterAttack3 > 32 && spriteCounterAttack3 <= 48) {
+					image = rightAtk3;
+				}
 			}
 			break;
 		}
