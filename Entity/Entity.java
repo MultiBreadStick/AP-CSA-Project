@@ -14,6 +14,7 @@ public class Entity {
 	public String direction;
 	public int spriteCounter = 0;
 	public int spriteNum = 1;
+	public int spriteNumAtk = 1;
 	
 
 }

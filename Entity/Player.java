@@ -77,8 +77,7 @@ public class Player extends Entity{
 	// checks which keys are being pressed if any based off the key handler class and sets the sprite's corresponding direction
 	// then cycles through each sprite( 2 for each direction) every 12 frames to create the running animaiton
 	public void update() {
-		if(keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed ||
-			mouseH.button1 || mouseH.button2 || mouseH.button3 || mouseH.button4 || mouseH.button5) {
+		if(keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed) {
 			keyPressed = true;
 			if((keyH.upPressed && keyH.downPressed) || (keyH.rightPressed && keyH.leftPressed)) {
 			} else if(keyH.upPressed && keyH.leftPressed) {
@@ -111,12 +110,6 @@ public class Player extends Entity{
 				x += speed;
 			}
 
-			if (mouseH.button1) {
-				isAttack = true;
-			} else if (mouseH.button4) {
-				System.out.println("yippee");
-			}
-
 			//Boundary wall
 			if (x >= Constants.MAX_X-250) {
 				x = Constants.MAX_X-250;
@@ -143,6 +136,7 @@ public class Player extends Entity{
 				spriteCounter = 0;
 			}
 			spriteCounterMovement3++;
+			spriteCounterAttack3++;
 			if(spriteCounterMovement3 > 64) {
 				spriteCounterMovement3 = 0;
 			}
@@ -151,14 +145,20 @@ public class Player extends Entity{
 			}
 		}else{
 			keyPressed = false;
-			isAttack = false;
+		} 
+
+		if (mouseH.button1 || mouseH.button2 || mouseH.button3 || mouseH.button4 || mouseH.button5) {
+			if (mouseH.button1) {
+				isAttack = true;
+			} else if (mouseH.button4) {
+				System.out.println("yippee");
+			}
 		}
+
 		if(!breathSound.isPlaying()){
 			breathSound.setSound(keyPressed ? 8 : 9);
 			breathSound.play();
 		}
-
-		System.out.println(breathSound.isPlaying());
 	}
 	// this sets which image the player sprite is supposed to be using a switch statment based off our update() method
 	// then it actually draws the player onto the screen in whatever location its supposed to be in
@@ -185,6 +185,12 @@ public class Player extends Entity{
 			}
 			}else{
 				image = down1;
+			} if (isAttack) {
+				if(spriteNumAtk == 1) {
+					image = downAtk2;
+				} if(spriteNumAtk == 2) {
+					image = downAtk3;
+				} else image = downAtk1;
 			}
 			break;
 		case "left":
@@ -200,6 +206,14 @@ public class Player extends Entity{
 			}
 			}else{
 				image = left1;
+			} if (isAttack) {
+				if (spriteCounterAttack3 <= 16) {
+					image = leftAtk1;
+				} if (spriteCounterAttack3 > 16 && spriteCounterAttack3 <= 32) {
+					image = leftAtk2;
+				} if (spriteCounterAttack3 > 32 && spriteCounterAttack3 <= 48) {
+					image = leftAtk3;
+				}
 			}
 			break;
 		case "right":
