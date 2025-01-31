@@ -49,27 +49,27 @@ public class Player extends Entity{
 			up1 = ImageIO.read(new File("Sprites/HazmatGuy/21.png"));
 			up2 = ImageIO.read(new File("Sprites/HazmatGuy/22.png"));
 			up3 = ImageIO.read(new File("Sprites/HazmatGuy/23.png"));
-			upAtk1 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/12.png"));
-			upAtk2 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/13.png"));
-			upAtk3 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/14.png"));
+			upAtk1 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/ATK12.png"));
+			upAtk2 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/ATK13.png"));
+			upAtk3 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/ATK14.png"));
 			down1 = ImageIO.read(new File("Sprites/HazmatGuy/11.png"));
 			down2 = ImageIO.read(new File("Sprites/HazmatGuy/12.png"));
 			down3 = ImageIO.read(new File("Sprites/HazmatGuy/13.png"));
-			downAtk1 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/22.png"));
-			downAtk2 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/23.png"));
-			downAtk3 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/24.png"));
+			downAtk1 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/ATK22.png"));
+			downAtk2 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/ATK23.png"));
+			downAtk3 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/ATK24.png"));
 			right1 = ImageIO.read(new File("Sprites/HazmatGuy/31.png"));
 			right2 = ImageIO.read(new File("Sprites/HazmatGuy/32.png"));
 			right3 = ImageIO.read(new File("Sprites/HazmatGuy/33.png"));
-			rightAtk1 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/32.png"));
-			rightAtk2 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/33.png"));
-			rightAtk3 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/34.png"));
+			rightAtk1 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/ATK32.png"));
+			rightAtk2 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/ATK33.png"));
+			rightAtk3 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/ATK34.png"));
 			left1 = ImageIO.read(new File("Sprites/HazmatGuy/41.png"));
 			left2 = ImageIO.read(new File("Sprites/HazmatGuy/42.png"));
 			left3 = ImageIO.read(new File("Sprites/HazmatGuy/43.png"));
-			leftAtk1 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/42.png"));
-			leftAtk2 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/43.png"));
-			leftAtk3 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/44.png"));
+			leftAtk1 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/ATK42.png"));
+			leftAtk2 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/ATK43.png"));
+			leftAtk3 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/ATK44.png"));
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
@@ -126,7 +126,7 @@ public class Player extends Entity{
 			
 			spriteCounter++;
 			if(spriteCounter > 16) {
-				sound.setSound(spriteCounter%2);
+				sound.setSound(4);
 				sound.play();
 				if(spriteNum == 1) {
 					spriteNum = 2;
@@ -136,12 +136,8 @@ public class Player extends Entity{
 				spriteCounter = 0;
 			}
 			spriteCounterMovement3++;
-			spriteCounterAttack3++;
 			if(spriteCounterMovement3 > 64) {
 				spriteCounterMovement3 = 0;
-			}
-			if (spriteCounterAttack3 > 48) {
-				spriteCounterAttack3 = 0;
 			}
 		}else{
 			keyPressed = false;
@@ -150,9 +146,14 @@ public class Player extends Entity{
 		if (mouseH.button1 || mouseH.button2 || mouseH.button3 || mouseH.button4 || mouseH.button5) {
 			if (mouseH.button1) {
 				isAttack = true;
+				if (spriteCounterAttack3 == 0) {
+					spriteCounterAttack3 = 1;
+				}
 			} else if (mouseH.button4) {
 				System.out.println("yippee");
 			}
+		} else {
+			isAttack = false;
 		}
 
 		if(!breathSound.isPlaying()){
@@ -175,6 +176,13 @@ public class Player extends Entity{
 			}else{
 				image = up1;
 			}
+			if (isAttack) {
+				if(spriteNumAtk == 1) {
+					image = upAtk2;
+				} if(spriteNumAtk == 2) {
+					image = upAtk3;
+				} else image = downAtk1;
+			} else image = down1;
 			break;
 		case "down":
 			if(keyPressed){
@@ -185,13 +193,14 @@ public class Player extends Entity{
 			}
 			}else{
 				image = down1;
-			} if (isAttack) {
+			}
+			if (isAttack) {
 				if(spriteNumAtk == 1) {
 					image = downAtk2;
 				} if(spriteNumAtk == 2) {
 					image = downAtk3;
 				} else image = downAtk1;
-			}
+			} else image = down1;
 			break;
 		case "left":
 			if(keyPressed){
@@ -206,15 +215,17 @@ public class Player extends Entity{
 			}
 			}else{
 				image = left1;
-			} if (isAttack) {
-				if (spriteCounterAttack3 <= 16) {
+			} if (isAttack && spriteCounterAttack3 > 0) {
+				if (spriteCounterAttack3 <= 4) {
 					image = leftAtk1;
-				} if (spriteCounterAttack3 > 16 && spriteCounterAttack3 <= 32) {
+				} if (spriteCounterAttack3 > 4 && spriteCounterAttack3 <= 16) {
 					image = leftAtk2;
-				} if (spriteCounterAttack3 > 32 && spriteCounterAttack3 <= 48) {
+				} if (spriteCounterAttack3 > 16 && spriteCounterAttack3 <= 20) {
 					image = leftAtk3;
+					spriteCounterAttack3 = 0;
+					isAttack = false;
 				}
-			}
+			} else image = left1;
 			break;
 		case "right":
 			if(keyPressed){
@@ -230,23 +241,20 @@ public class Player extends Entity{
 			}else{
 				image = right1;
 			}
-			if (isAttack) {
-				if (spriteCounterAttack3 <= 16) {
+			if (isAttack && spriteCounterAttack3 > 0) {
+				if (spriteCounterAttack3 <= 4) {
 					image = rightAtk1;
-				} if (spriteCounterAttack3 > 16 && spriteCounterAttack3 <= 32) {
+				} if (spriteCounterAttack3 > 4 && spriteCounterAttack3 <= 16) {
 					image = rightAtk2;
-				} if (spriteCounterAttack3 > 32 && spriteCounterAttack3 <= 48) {
+				} if (spriteCounterAttack3 > 16 && spriteCounterAttack3 <= 20) {
 					image = rightAtk3;
+					spriteCounterAttack3 = 0;
+					isAttack = false;
 				}
-			}
+			} else image = left1;
 			break;
 		}
 		g2.drawImage(image, x, y, 4*gp.tileSize, 4*gp.tileSize, null);
 
-	}
-
-	public void setXAndY (int x, int y) {
-		this.x = x;
-		this.y = y;
 	}
 }

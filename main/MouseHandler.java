@@ -10,6 +10,11 @@ public class MouseHandler extends Frame implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
         int code = e.getButton();
         if(code == MouseEvent.BUTTON1) {
 			button1 = true;
@@ -26,11 +31,6 @@ public class MouseHandler extends Frame implements MouseListener {
         if(code == 5) {
             button5 = true;
         }
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
     }
 
     @Override
