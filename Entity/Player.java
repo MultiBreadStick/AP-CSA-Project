@@ -26,6 +26,8 @@ public class Player extends Entity{
 	private boolean isAttack;
 	sounds sound = new sounds();
 	sounds breathSound = new sounds();
+	sounds attackSounds = new sounds();
+	private BufferedImage image = null;
 	
 	public Player(GamePanel gp, KeyHandler keyH, MouseHandler mouseH) {
 		this.gp = gp;
@@ -49,15 +51,15 @@ public class Player extends Entity{
 			up1 = ImageIO.read(new File("Sprites/HazmatGuy/21.png"));
 			up2 = ImageIO.read(new File("Sprites/HazmatGuy/22.png"));
 			up3 = ImageIO.read(new File("Sprites/HazmatGuy/23.png"));
-			upAtk1 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/ATK12.png"));
-			upAtk2 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/ATK13.png"));
-			upAtk3 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/ATK14.png"));
+			upAtk1 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/ATK22.png"));
+			upAtk2 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/ATK23.png"));
+			upAtk3 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/ATK24.png"));
 			down1 = ImageIO.read(new File("Sprites/HazmatGuy/11.png"));
 			down2 = ImageIO.read(new File("Sprites/HazmatGuy/12.png"));
 			down3 = ImageIO.read(new File("Sprites/HazmatGuy/13.png"));
-			downAtk1 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/ATK22.png"));
-			downAtk2 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/ATK23.png"));
-			downAtk3 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/ATK24.png"));
+			downAtk1 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/ATK12.png"));
+			downAtk2 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/ATK13.png"));
+			downAtk3 = ImageIO.read(new File("Sprites/HazmatGuy/ATK/ATK14.png"));
 			right1 = ImageIO.read(new File("Sprites/HazmatGuy/31.png"));
 			right2 = ImageIO.read(new File("Sprites/HazmatGuy/32.png"));
 			right3 = ImageIO.read(new File("Sprites/HazmatGuy/33.png"));
@@ -77,6 +79,24 @@ public class Player extends Entity{
 	// checks which keys are being pressed if any based off the key handler class and sets the sprite's corresponding direction
 	// then cycles through each sprite( 2 for each direction) every 12 frames to create the running animaiton
 	public void update() {
+		updateMovement();
+		checkBoundaryWall();
+		updateMoveSprites(); 
+		updateAttack();
+		updateAttackSprites();
+		updateSound();
+	}
+	// this sets which image the player sprite is supposed to be using a switch statment based off our update() method
+	// then it actually draws the player onto the screen in whatever location its supposed to be in
+	public void draw(Graphics2D g2) {
+		drawMovement();
+		drawAttack();
+
+		g2.drawImage(image, x, y, 4*gp.tileSize, 4*gp.tileSize, null);
+
+	}
+
+	private void updateMovement () {
 		if(keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed) {
 			keyPressed = true;
 			if((keyH.upPressed && keyH.downPressed) || (keyH.rightPressed && keyH.leftPressed)) {
@@ -109,152 +129,220 @@ public class Player extends Entity{
 				direction = "right";
 				x += speed;
 			}
+		}
 
-			//Boundary wall
-			if (x >= Constants.MAX_X-250) {
-				x = Constants.MAX_X-250;
-			} else if (x <= 60) {
-				x = 60;
-			}
-			if (y >= Constants.MAX_Y-130-192) {
-				y = Constants.MAX_Y-130-192;
-			} else if (y <= 180-192) {//wall size minus player
-				y = 180-192;
-			}
-			
+	}
 
-			
+	private void checkBoundaryWall() {
+		if (x >= Constants.MAX_X-250) {
+			x = Constants.MAX_X-250;
+		} else if (x <= 60) {
+			x = 60;
+		}
+		if (y >= Constants.MAX_Y-130-192) {
+			y = Constants.MAX_Y-130-192;
+		} else if (y <= 180-192) {//wall size minus player
+			y = 180-192;
+		}
+	}
+
+	private void updateMoveSprites() {
+		if (keyPressed) {
 			spriteCounter++;
-			if(spriteCounter > 16) {
-				sound.setSound(4);
-				sound.play();
-				if(spriteNum == 1) {
-					spriteNum = 2;
-				}else if(spriteNum == 2) {
-					spriteNum = 1;
-				}
-				spriteCounter = 0;
-			}
-			spriteCounterMovement3++;
-			if(spriteCounterMovement3 > 64) {
-				spriteCounterMovement3 = 0;
-			}
-		}else{
-			keyPressed = false;
-		} 
+		if(spriteCounter > 16) {
+			sound.setSound(8);
+			sound.play();
+		if(spriteNum == 1) {
+			spriteNum = 2;
+		}else if(spriteNum == 2) {
+			spriteNum = 1;
+		}
+		spriteCounter = 0;
+		}
+		spriteCounterMovement3++;
+		if(spriteCounterMovement3 > 64) {
+			spriteCounterMovement3 = 0;
+		}
+		}
+	}
 
-		if (mouseH.button1 || mouseH.button2 || mouseH.button3 || mouseH.button4 || mouseH.button5) {
+	private void updateAttack() {
+		if (mouseH.button1 || mouseH.button2 ) {
 			if (mouseH.button1) {
 				isAttack = true;
 				if (spriteCounterAttack3 == 0) {
 					spriteCounterAttack3 = 1;
 				}
-			} else if (mouseH.button4) {
-				System.out.println("yippee");
 			}
 		} else {
-			isAttack = false;
+			if(isAttack) {
+				spriteCounterAttack3++;
+			} else {
+				spriteCounterAttack3 = 0;
+			}
+		}
+	}
+
+	private void updateAttackSprites() {
+		if (mouseH.button1 || mouseH.button2 ) {
+			if (mouseH.button1) {
+				isAttack = true;
+				if (spriteCounterAttack3 == 0) {
+					spriteCounterAttack3 = 1;
+				}
+			}
+		} else {
+			if(isAttack) {
+				spriteCounterAttack3++;
+			}
+		}
+	}
+
+	private void updateSound() {
+		if(!sound.isPlaying()) {
+			sound.muted = true;
+			sound.setSound(4);
 		}
 
 		if(!breathSound.isPlaying()){
+			breathSound.muted = true;
 			breathSound.setSound(keyPressed ? 8 : 9);
 			breathSound.play();
 		}
+
+		if(isAttack && !attackSounds.isPlaying()) {
+			attackSounds.setSound(11);
+		}
 	}
-	// this sets which image the player sprite is supposed to be using a switch statment based off our update() method
-	// then it actually draws the player onto the screen in whatever location its supposed to be in
-	public void draw(Graphics2D g2) {
-		BufferedImage image = null;
+
+
+
+
+	private void drawMovement() {
 		switch(direction) {
-		case "up":
-			if(keyPressed){
-				if(spriteNum == 1) {
-				image = up2;
-				}if(spriteNum == 2) {
-				image = up3;
-			}
-			}else{
-				image = up1;
-			}
-			if (isAttack) {
-				if(spriteNumAtk == 1) {
-					image = upAtk2;
-				} if(spriteNumAtk == 2) {
-					image = upAtk3;
-				} else image = downAtk1;
-			} else image = down1;
-			break;
-		case "down":
-			if(keyPressed){
-				if(spriteNum == 1) {
-				image = down2;
-				}if(spriteNum == 2) {
-				image = down3;
-			}
-			}else{
-				image = down1;
-			}
-			if (isAttack) {
-				if(spriteNumAtk == 1) {
-					image = downAtk2;
-				} if(spriteNumAtk == 2) {
-					image = downAtk3;
-				} else image = downAtk1;
-			} else image = down1;
-			break;
-		case "left":
-			if(keyPressed){
-				if(spriteCounterMovement3<=16){
-				image = left2;
-				}if(spriteCounterMovement3>16&&spriteCounterMovement3<=32) {
-				image = left1;
-				}if(spriteCounterMovement3>32&&spriteCounterMovement3<=48) {
-				image = left3;
-				}if(spriteCounterMovement3>48&&spriteCounterMovement3<=64) {
-				image = left1;
-			}
-			}else{
-				image = left1;
-			} if (isAttack && spriteCounterAttack3 > 0) {
-				if (spriteCounterAttack3 <= 4) {
-					image = leftAtk1;
-				} if (spriteCounterAttack3 > 4 && spriteCounterAttack3 <= 16) {
-					image = leftAtk2;
-				} if (spriteCounterAttack3 > 16 && spriteCounterAttack3 <= 20) {
-					image = leftAtk3;
-					spriteCounterAttack3 = 0;
-					isAttack = false;
+			case "up":
+				if(keyPressed){
+					if(spriteNum == 1) {
+					image = up2;
+					}if(spriteNum == 2) {
+					image = up3;
 				}
-			} else image = left1;
-			break;
-		case "right":
-			if(keyPressed){
-				if(spriteCounterMovement3<=16){
-				image = right2;
-				}if(spriteCounterMovement3>16&&spriteCounterMovement3<=32) {
-				image = right1;
-				}if(spriteCounterMovement3>32&&spriteCounterMovement3<=48) {
-				image = right3;
-				}if(spriteCounterMovement3>48&&spriteCounterMovement3<=64) {
-				image = right1;
-			}
-			}else{
-				image = right1;
-			}
-			if (isAttack && spriteCounterAttack3 > 0) {
-				if (spriteCounterAttack3 <= 4) {
-					image = rightAtk1;
-				} if (spriteCounterAttack3 > 4 && spriteCounterAttack3 <= 16) {
-					image = rightAtk2;
-				} if (spriteCounterAttack3 > 16 && spriteCounterAttack3 <= 20) {
-					image = rightAtk3;
-					spriteCounterAttack3 = 0;
-					isAttack = false;
+				}else{
+					image = up1;
 				}
-			} else image = left1;
+				break;
+			case "down":
+				if(keyPressed){
+					if(spriteNum == 1) {
+					image = down2;
+					}if(spriteNum == 2) {
+					image = down3;
+				}
+				}else{
+					image = down1;
+				}
+				break;
+			case "left":
+				if(keyPressed){
+					if(spriteCounterMovement3<=16){
+					image = left2;
+					}if(spriteCounterMovement3>16&&spriteCounterMovement3<=32) {
+					image = left1;
+					}if(spriteCounterMovement3>32&&spriteCounterMovement3<=48) {
+					image = left3;
+					}if(spriteCounterMovement3>48&&spriteCounterMovement3<=64) {
+					image = left1;
+				}
+				}else{
+					image = left1;
+				}
+				break;
+			case "right":
+				if(keyPressed){
+					if(spriteCounterMovement3<=16){
+					image = right2;
+					}if(spriteCounterMovement3>16&&spriteCounterMovement3<=32) {
+					image = right1;
+					}if(spriteCounterMovement3>32&&spriteCounterMovement3<=48) {
+					image = right3;
+					}if(spriteCounterMovement3>48&&spriteCounterMovement3<=64) {
+					image = right1;
+				}
+				}else{
+					image = right1;
+				}
+				break;
+			}
+	}
+
+	private void drawAttack() {
+		switch(direction) {
+			case "up" :
+				if (isAttack && !(spriteCounterAttack3 == 0)) {
+					if (spriteCounterAttack3 <= 4) {
+						image = upAtk1;
+					} else if (spriteCounterAttack3 > 4 && spriteCounterAttack3 <= 16) {
+						image = upAtk2;
+					} else if (spriteCounterAttack3 > 16 && spriteCounterAttack3 < 20) {
+						image = upAtk3;
+					} else if (spriteCounterAttack3 > 20) {
+						spriteCounterAttack3 = 0;
+						isAttack = false;
+					}
+					spriteCounterAttack3++;
+				}
+			break;
+
+			case "down" :
+				if (isAttack && !(spriteCounterAttack3 == 0)) {
+					if (spriteCounterAttack3 <= 4) {
+						image = downAtk1;
+					} else if (spriteCounterAttack3 > 4 && spriteCounterAttack3 <= 16) {
+						image = downAtk2;
+					} else if (spriteCounterAttack3 > 16 && spriteCounterAttack3 < 20) {
+						image = downAtk3;
+					} else if (spriteCounterAttack3 > 20) {
+						image = down1;
+						spriteCounterAttack3 = 0;
+						isAttack = false;
+					}
+					spriteCounterAttack3++;
+				}
+			break;
+
+			case "left" :
+				if (isAttack && !(spriteCounterAttack3 == 0)) {
+					if (spriteCounterAttack3 <= 4) {
+						image = leftAtk1;
+					} else if (spriteCounterAttack3 > 4 && spriteCounterAttack3 <= 16) {
+						image = leftAtk2;
+					} else if (spriteCounterAttack3 > 16 && spriteCounterAttack3 < 20) {
+						image = leftAtk3;
+					} else if (spriteCounterAttack3 > 20) {
+						image = left1;
+						spriteCounterAttack3 = 0;
+						isAttack = false;
+					}
+					spriteCounterAttack3++;
+				}
+			break;
+
+			case "right" :
+				if (isAttack && !(spriteCounterAttack3 == 0)) {
+					if (spriteCounterAttack3 <= 4) {
+						image = rightAtk1;
+					} else if (spriteCounterAttack3 > 4 && spriteCounterAttack3 <= 16) {
+						image = rightAtk2;
+					} else if (spriteCounterAttack3 > 16 && spriteCounterAttack3 < 20) {
+						image = rightAtk3;
+					} else if (spriteCounterAttack3 > 20) {
+						image = right1;
+						spriteCounterAttack3 = 0;
+						isAttack = false;
+					}
+					spriteCounterAttack3++;
+				}
 			break;
 		}
-		g2.drawImage(image, x, y, 4*gp.tileSize, 4*gp.tileSize, null);
-
 	}
 }

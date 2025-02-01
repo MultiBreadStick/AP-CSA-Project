@@ -9,6 +9,7 @@ import javax.sound.sampled.AudioInputStream;
 public class sounds {
     Clip clip;
     URL soundURL[] = new URL[30];
+    public boolean muted;
 
     public sounds(){
         soundURL[0] = getClass().getResource("/soundFiles/playerWalk.wav");
@@ -22,6 +23,7 @@ public class sounds {
         soundURL[8] = getClass().getResource("/soundFiles/horrorsouds/Breathing_fast.wav");
         soundURL[9] = getClass().getResource("/soundFiles/horrorsouds/Breathing_slow.wav");
         soundURL[10] = getClass().getResource("/soundFiles/horrorsouds/Gasp_3.wav");
+        soundURL[11] = getClass().getResource("/soundFiles/horrorsouds/Metal_Twang.wav");
         
     }
 
@@ -35,7 +37,9 @@ public class sounds {
         }
     }
     public void play(){
-        clip.start();
+        if(!muted) {
+            clip.start();
+        }
     }
     public void stop(){
         clip.stop();
@@ -47,5 +51,9 @@ public class sounds {
 
     public boolean isPlaying(){
         return clip != null && clip.isRunning();
+    }
+
+    public void setMuted(boolean muted) {
+        this.muted = muted;
     }
 }

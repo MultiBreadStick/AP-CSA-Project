@@ -62,11 +62,8 @@ public class GamePanel extends JPanel implements Runnable{
 		sound.loop();
 		double drawInterval = 1000000000/FPS; 
 		double nextDrawTime = System.nanoTime() + drawInterval;
-		// this is te game loop
 		while(gameThread != null ) {
-			//this creates the frame and updates the game
 			update();
-			//redraws everything on the window
 			repaint();
 			
 			
@@ -90,26 +87,24 @@ public class GamePanel extends JPanel implements Runnable{
 	}
 	public void update() {
 		speaker.update();
-		player.update(); // updates the player state as this is the only thing we have right now, see player class for more
+		player.update();
 		BlackFade.update();
 		List<EnemyAI> enemiesToRemove = new ArrayList<>();
 
-    // First loop to check and mark dead enemies
-    for(EnemyAI enemy : map.enemies) {
-        if(enemy.thisEnemy.isDead) {
-            enemiesToRemove.add(enemy); // Add the dead enemy to the removal list
-        }
-    }
+    // Remove ememies
+    	for(EnemyAI enemy : map.enemies) {
+        	if(enemy.thisEnemy.isDead) {
+            enemiesToRemove.add(enemy);
+        	}
+    	}
 
-    // Now remove enemies outside of the iteration loop
-    for (EnemyAI enemy : enemiesToRemove) {
-        map.removeEnemy(enemy); // Remove the enemy from the map
-    }
+    	for (EnemyAI enemy : enemiesToRemove) {
+        	map.removeEnemy(enemy);
+    	}
 
-    // Second loop to update the remaining enemies
-    for(EnemyAI enemy : map.enemies) {
-        enemy.enemyMovement(player); // Move the remaining enemies
-    }
+    	for(EnemyAI enemy : map.enemies) {
+        	enemy.enemyMovement(player);
+    	}
 		
 	}
 	
@@ -121,8 +116,7 @@ public class GamePanel extends JPanel implements Runnable{
 		player.draw(g2); // draws the player
 		speaker.draw(g2);
 		BlackFade.draw(g2);
-		g2.dispose(); // clears the graphics2D resources
-		// see the player class for more
+		g2.dispose();
 	}
 	
 
